@@ -42,7 +42,10 @@
 		/>
 	</div>
 	<nav>
-		<ul>
+		<ul class="flex flex-row">
+			<li>
+				<a href="/">Home</a>
+			</li>
 			<li>
 				<a href="/about">About</a>
 			</li>
