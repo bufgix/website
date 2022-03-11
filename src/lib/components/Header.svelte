@@ -1,14 +1,16 @@
 <script lang="ts">
 	import type { WithTarget } from '../../app';
 
-	let placeholder = 'Type `theme dark`...';
+	let placeholder = 'type `theme dark`...';
 
 	const COMMANDS = {
-		theme: (value: string) => {
+		theme: (event: WithTarget<KeyboardEvent, HTMLInputElement>, value: string) => {
 			if (['light', 'dark'].includes(value)) {
 				localStorage.setItem('theme', value);
 				if (value === 'dark') document.documentElement.classList.add('dark');
 				else document.documentElement.classList.remove('dark');
+			} else {
+				placeholder = `${value} is not a valid theme`;
 			}
 		}
 	};
@@ -16,10 +18,12 @@
 	const onKeyup = (e: WithTarget<KeyboardEvent, HTMLInputElement>) => {
 		if (e.key === 'Enter') {
 			const { value } = e.target;
+			if (!value) return;
+			placeholder = 'type `theme dark`...';
 			const [command, ...args] = value.split(' ');
 
 			if (COMMANDS[command]) {
-				COMMANDS[command](args.join(' '));
+				COMMANDS[command](e, args.join(' '));
 			} else {
 				placeholder = `${command} not found`;
 			}
