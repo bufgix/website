@@ -8,3 +8,5 @@ declare namespace App {
 	// interface Session {}
 	// interface Stuff {}
 }
+
+export type WithTarget<Event, Target> = Event & { currentTarget: Target; target: Target };

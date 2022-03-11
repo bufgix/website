@@ -14,7 +14,7 @@
 	<title>{title} - Faruk's Tech Blog</title>
 </svelte:head>
 
-<article class="prose">
+<article class="prose dark:prose-invert">
 	<h1>{title}</h1>
 	<p>Published: {date}</p>
 

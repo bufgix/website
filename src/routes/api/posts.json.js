@@ -20,6 +20,8 @@ export const get = async () => {
 	);
 
 	const sortedPosts = allPosts.sort((a, b) => {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		return new Date(b.meta.date) - new Date(a.meta.date);
 	});
 
