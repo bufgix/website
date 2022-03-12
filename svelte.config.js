@@ -3,6 +3,7 @@ import preprocess from 'svelte-preprocess';
 import { mdsvex } from 'mdsvex';
 import relativeImages from 'mdsvex-relative-images';
 import remarkHeadingId from 'remark-heading-id';
+import figure from 'rehype-figure';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -16,7 +17,8 @@ const config = {
 				blog: 'src/lib/layouts/blog.svelte',
 				_: 'src/lib/layouts/default.svelte'
 			},
-			remarkPlugins: [relativeImages, remarkHeadingId]
+			remarkPlugins: [relativeImages, remarkHeadingId],
+			rehypePlugins: [figure]
 		})
 	],
 
