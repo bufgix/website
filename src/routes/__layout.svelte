@@ -14,11 +14,9 @@
 
 <script>
 	import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
 
 	import Header from '$lib/components/Header.svelte';
-	import '$lib/style/index.scss';
-	import '$lib/style/atom-dark.css';
-	import { onMount } from 'svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
 	onMount(() => {
@@ -50,3 +48,8 @@
 
 	<Footer />
 </main>
+
+<style lang="scss" global>
+    @use '../lib/style/index';
+    @use '../lib/style/atom-dark.css';
+</style>
