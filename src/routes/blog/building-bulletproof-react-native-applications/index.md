@@ -144,26 +144,27 @@ Genel olarak böyle bir dizin yapısı kullanıyorum. Kısaca bir özet geceyim,
 - `bootstrap.tsx` Bu dosya uygulamamızın kök komponenti. Genelde burada uygulama açılmadan önce yüklencek
   asenkron işlemler(network requestleri, local databaseden inital verilerin çekilmesi vb.) yapılır. Provider'ları da
   bu dosyaya yazarım ve genelde şuna benzer:
-  ![ProvidersHEll](./provider.jpg)
 
-  Eğer SplashScreen kullancaksınız bütün asenkron işlemleri yaptıktan sonra Splash ekranını bu component içinde kaldırabilirsiniz.
+![ProvidersHEll](./provider.jpg)
 
-  Örnek olarak:
+Eğer SplashScreen kullancaksınız bütün asenkron işlemleri yaptıktan sonra Splash ekranını bu component içinde kaldırabilirsiniz.
 
-  ```tsx
-  import React, { useEffect } from 'react';
-  import SplashScreen from 'react-native-splash-screen';
+Örnek olarak:
 
-  import RootStackScreen from './navigation';
+```tsx
+import React, { useEffect } from 'react';
+import SplashScreen from 'react-native-splash-screen';
 
-  export default function Bootstrap() {
-  	useEffect(() => {
-  		setupApp().then(() => SplashScreen.hide());
-  	}, []);
+import RootStackScreen from './navigation';
 
-  	return <RootStackScreen />;
-  }
-  ```
+export default function Bootstrap() {
+	useEffect(() => {
+		setupApp().then(() => SplashScreen.hide());
+	}, []);
+
+	return <RootStackScreen />;
+}
+```
 
 ### Iconlar ve SVG
 
