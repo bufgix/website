@@ -1,3 +1,5 @@
+import { PAGES } from '$lib/constants';
+
 export const slugify = (text: string) => {
 	const trMap = {
 		çÇ: 'c',
@@ -17,4 +19,12 @@ export const slugify = (text: string) => {
 		.replace(/\s/gi, '-') // convert spaces to dashes
 		.replace(/[-]+/gi, '-') // trim repeated dashes
 		.toLowerCase();
+};
+
+export const getRandomCommandPlaceholder = () => {
+	const targetTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+	const randomRoute = PAGES[Math.floor(Math.random() * PAGES.length)].name;
+	const commands = [`theme ${targetTheme}`, `go ${randomRoute}`, `help`];
+
+	return `type \`${commands[Math.floor(Math.random() * commands.length)]}\``;
 };

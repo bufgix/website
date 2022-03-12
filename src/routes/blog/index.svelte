@@ -1,0 +1,1 @@
+<h2>All Blog Posts</h2>

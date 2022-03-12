@@ -19,6 +19,7 @@
 	import '$lib/style/index.scss';
 	import '$lib/style/atom-dark.css';
 	import { onMount } from 'svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
 	onMount(() => {
 		// set theme
@@ -36,6 +37,7 @@
 
 <main class="bg-light dark:bg-dark dark:text-white min-h-screen transition-colors duration-100">
 	<Header />
+
 	{#key currentRoute}
 		<main
 			class="prose container w-full md:mx-auto px-4 dark:prose-invert"
@@ -45,4 +47,6 @@
 			<slot />
 		</main>
 	{/key}
+
+	<Footer />
 </main>

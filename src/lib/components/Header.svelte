@@ -1,7 +1,16 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { WithTarget } from '../../app';
+	import { PAGES } from '$lib/constants';
+	import { goto } from '$app/navigation';
+	import { getRandomCommandPlaceholder } from '$lib/utils';
 
-	let placeholder = 'type `theme dark`...';
+	let placeholder = '';
+	let output = '';
+
+	onMount(() => {
+		placeholder = getRandomCommandPlaceholder();
+	});
 
 	const COMMANDS = {
 		theme: (event: WithTarget<KeyboardEvent, HTMLInputElement>, value: string) => {
@@ -12,6 +21,15 @@
 			} else {
 				placeholder = `${value} is not a valid theme`;
 			}
+		},
+		go: (event: WithTarget<KeyboardEvent, HTMLInputElement>, name: string) => {
+			const page = PAGES.find((page) => page.name === name);
+			if (page) goto(page.path, { keepfocus: true });
+			else placeholder = `${name} is not a valid page`;
+		},
+
+		help: () => {
+			output = `Available commands: ${Object.keys(COMMANDS).join(', ')}`;
 		}
 	};
 
@@ -19,7 +37,8 @@
 		if (e.key === 'Enter') {
 			const { value } = e.target;
 			if (!value) return;
-			placeholder = 'type `theme dark`...';
+			placeholder = getRandomCommandPlaceholder();
+			output = '';
 			const [command, ...args] = value.split(' ');
 
 			if (COMMANDS[command]) {
@@ -45,6 +64,9 @@
 			on:keyup={onKeyup}
 		/>
 	</div>
+	{#if output}
+		<code class="text-sm md:text-base text-gray-400">{output}</code>
+	{/if}
 	<nav>
 		<ul class="flex flex-row">
 			<li>
@@ -54,7 +76,7 @@
 				<a href="/about">About</a>
 			</li>
 			<li>
-				<a href="/tils">TILs</a>
+				<a href="/snippets">Snippets</a>
 			</li>
 			<li>
 				<a href="/bookmarks">Bookmarks</a>
