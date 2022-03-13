@@ -28,3 +28,9 @@ export const getRandomCommandPlaceholder = () => {
 
 	return `type \`${commands[Math.floor(Math.random() * commands.length)]}\``;
 };
+
+export const fixCodeBlock = (code: string) => {
+	return code
+		.replace(/>{@html `<code class="language-/g, '><code class="language-')
+		.replace(/<\/code>`}<\/pre>/g, '</code></pre>');
+};

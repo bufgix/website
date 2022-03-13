@@ -2,7 +2,7 @@
 	import type { Load } from '@sveltejs/kit';
 
 	export const load: Load = async ({ params, fetch }) => {
-		const snippetData = await (await fetch(`/api/snippets/${params.id}`)).json();
+		const snippetData = await (await fetch(`/api/snippets/${params.id}.json`)).json();
 
 		return {
 			props: {
@@ -14,13 +14,11 @@
 </script>
 
 <script>
-	import { page } from '$app/stores';
+	import { fixCodeBlock } from '$lib/utils';
 
-	export let id, markdownBody, code;
+	export let code;
 </script>
 
 <div>
-	{@html code
-		.replace(/>{@html `<code class="language-/g, '><code class="language-')
-		.replace(/<\/code>`}<\/pre>/g, '</code></pre>')}
+	{@html fixCodeBlock(code)}
 </div>
