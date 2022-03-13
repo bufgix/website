@@ -27,6 +27,7 @@ export const get = async () => {
 			return {
 				id: pageId,
 				title: pageTitle,
+				path: `/snippets/${pageId}`,
 				markdownBody: body,
 				html: await compile(body, {
 					remarkPlugins: [relativeImages, remarkHeadingId],

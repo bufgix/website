@@ -47,9 +47,13 @@
 		random: {
 			help: () => 'Go to random blog or snippet',
 			func: async () => {
-				const posts = await (await fetch('/api/posts.json')).json();
-				const post = posts[Math.floor(Math.random() * posts.length)];
-				goto(`${post.path}`, { keepfocus: true });
+				const [posts, snippets] = await Promise.all([
+					await (await fetch('/api/posts.json')).json(),
+					await (await fetch('/api/snippets.json')).json()
+				]);
+				const allContent = [...posts, ...snippets];
+				const randomContent = allContent[Math.floor(Math.random() * allContent.length)];
+				goto(`${randomContent.path}`, { keepfocus: true });
 			}
 		},
 
