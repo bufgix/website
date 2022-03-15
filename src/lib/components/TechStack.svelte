@@ -1,5 +1,5 @@
 <h3 id="-nbsp-tech-stack">Tech Stack</h3>
-<div class='flex flex-wrap'>
+<div class="flex flex-wrap">
 	<img
 		src="https://img.shields.io/badge/-JavaScript-05122A?style=flat&amp;logo=javascript"
 		alt="JavaScript"
@@ -10,6 +10,10 @@
 	/>&nbsp;
 	<img src="https://img.shields.io/badge/-Vue-05122A?style=flat&amp;logo=vue.js" alt="Vue" />&nbsp;
 	<img
+		src="https://img.shields.io/badge/-Svelte-05122A?style=flat&amp;logo=svelte"
+		alt="Svelte"
+	/>&nbsp;
+	<img
 		src="https://img.shields.io/badge/-React%20Native-05122A?style=flat&amp;logo=react"
 		alt="React Native"
 	/>&nbsp;
@@ -19,6 +23,10 @@
 	/>&nbsp;
 	<img
 		src="https://img.shields.io/badge/-TypeScript-05122A?style=flat&amp;logo=TypeScript"
+		alt="Typescript"
+	/>&nbsp;
+	<img
+		src="https://img.shields.io/badge/-Swift-05122A?style=flat&amp;logo=Swift"
 		alt="Typescript"
 	/>&nbsp;
 	<img

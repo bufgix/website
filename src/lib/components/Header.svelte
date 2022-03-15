@@ -8,9 +8,11 @@
 
 	let placeholder = '';
 	let output = '';
+	let theme;
 
 	onMount(() => {
 		placeholder = getRandomCommandPlaceholder();
+		theme = localStorage.getItem('theme');
 	});
 
 	const COMMANDS = {
@@ -72,6 +74,11 @@
 		}
 	};
 
+	const changeTheme = () => {
+		theme = theme === 'dark' ? 'light' : 'dark';
+		COMMANDS.theme.func(null, theme);
+	};
+
 	const onKeyup = (e: WithTarget<KeyboardEvent, HTMLInputElement>) => {
 		if (e.key === 'Enter') {
 			const { value } = e.target;
@@ -113,13 +120,16 @@
 		<code class="text-sm md:text-base text-gray-400">{@html output}</code>
 	{/if}
 
-	<nav>
+	<nav class="mt-2">
 		<ul class="flex flex-row items-center">
 			<li>
 				<a href="/">Home</a>
 			</li>
 			<li>
 				<a href="/about">About</a>
+			</li>
+			<li>
+				<a href="/blog">Blog</a>
 			</li>
 			<li>
 				<a href="/snippets">Snippets</a>
@@ -136,6 +146,14 @@
 				<a target="_blank" href="https://twitter.com/bufgix_">
 					<Icon name="twitter" size="21px" class="fill-dark dark:fill-white" />
 				</a>
+			</li>
+			<li>
+				<Icon
+					name={theme === 'dark' ? 'moon' : 'sun'}
+					size="21px"
+					class="fill-dark dark:fill-white cursor-pointer"
+					on:click={changeTheme}
+				/>
 			</li>
 		</ul>
 	</nav>
