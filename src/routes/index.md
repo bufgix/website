@@ -1,5 +1,5 @@
 <script>
-  import TechStack from '$lib/components/TechStack.svelte';
+	import TechStack from '$lib/components/TechStack.svelte';
 </script>
 
 # Ömer Faruk Oruç
