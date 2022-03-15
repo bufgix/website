@@ -15,6 +15,10 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
+	import dayjs from 'dayjs';
+	import relativeTime from 'dayjs/plugin/relativeTime';
+
+	dayjs.extend(relativeTime);
 
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
@@ -50,6 +54,6 @@
 </main>
 
 <style lang="scss" global>
-    @use '../lib/style/index';
-    @use '../lib/style/atom-dark.css';
+	@use '../lib/style/index';
+	@use '../lib/style/atom-dark.css';
 </style>

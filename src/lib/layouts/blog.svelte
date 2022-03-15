@@ -6,6 +6,8 @@
 </script>
 
 <script>
+	import dayjs from 'dayjs';
+
 	export let title;
 	export let date;
 </script>
@@ -15,7 +17,10 @@
 </svelte:head>
 
 <article class="prose dark:prose-invert">
-	<h1>{title}</h1>
+	<div class="md:my-16">
+		<span class="font-serif text-xl">{dayjs(date).format('MMM DD, YYYY')} </span>
+		<h1 class="md:text-5xl">{title}</h1>
+	</div>
 	<p>Published: {date}</p>
 
 	<slot />

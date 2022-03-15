@@ -18,9 +18,11 @@
 </script>
 
 {#each snippets as { html: { code }, title, id }}
-	<div class="snippet">
-		<h1>{title}</h1>
+	<div class="prose-headings:text-2xl">
+		<a sveltekit:prefetch href={`/snippets/${id}`}>
+			<h1>{title}</h1>
+		</a>
 		{@html fixCodeBlock(code)}
-		<a sveltekit:prefetch href={`/snippets/${id}`}>Go detail</a>
 	</div>
+	<hr />
 {/each}
