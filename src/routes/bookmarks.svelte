@@ -16,8 +16,6 @@
 	import dayjs from 'dayjs';
 
 	export let bookmarks;
-
-	console.log(bookmarks);
 </script>
 
 {#each bookmarks.items as bookmark}
@@ -25,7 +23,7 @@
 		<a target="_blank" rel="external" href={bookmark.link}>
 			<h4>{bookmark.title}</h4>
 		</a>
-		<h6 class='mb-1'>{bookmark.excerpt}</h6>
-		<span class='text-gray-400'>{bookmark.domain}・{dayjs(bookmark.created).fromNow()}</span>
+		<h6 class="mb-1">{bookmark.excerpt}</h6>
+		<span class="text-gray-400">{bookmark.domain}・{dayjs(bookmark.created).fromNow()}</span>
 	</div>
 {/each}
