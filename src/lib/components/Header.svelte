@@ -129,12 +129,12 @@
 			</li>
 			<li>
 				<a href="https://github.com/bufgix" target="_blank"
-					><Icon name="github" size="20px" class="fill-white" /></a
+					><Icon name="github" size="20px" class="fill-dark dark:fill-white" /></a
 				>
 			</li>
 			<li>
 				<a target="_blank" href="https://twitter.com/bufgix_">
-					<Icon name="twitter" size="21px" class="fill-white" />
+					<Icon name="twitter" size="21px" class="fill-dark dark:fill-white" />
 				</a>
 			</li>
 		</ul>

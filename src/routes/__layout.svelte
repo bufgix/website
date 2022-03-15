@@ -59,4 +59,12 @@
 <style lang="scss" global>
 	@use '../lib/style/index';
 	@use '../lib/style/one-dark.css';
+
+	article {
+		figure {
+			figcaption {
+				@apply text-sm text-center mt-0;
+			}
+		}
+	}
 </style>

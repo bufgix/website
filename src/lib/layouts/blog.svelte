@@ -30,13 +30,3 @@
 
 	<slot />
 </article>
-
-<style lang="scss" global>
-	article {
-		figure {
-			figcaption {
-				@apply text-sm text-center mt-0;
-			}
-		}
-	}
-</style>
