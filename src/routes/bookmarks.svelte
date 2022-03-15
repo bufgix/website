@@ -20,7 +20,7 @@
 
 <h1 class="mb-2">Bookmarks</h1>
 <h6 class="font-serif text-gray-500">
-	Mostly software and frontend links that I come across while surfing the Internet.
+	Interesting links that I come across while surfing the Internet. Mostly about <i>web development.</i>
 </h6>
 <hr class="my-6" />
 

@@ -9,6 +9,22 @@ tags:
 
 Twitterda gezinirken şöyle bir şey gördüm.
 
+<blockquote class="twitter-tweet">
+  <p lang="tr" dir="ltr">
+    Python yüzünden dünya bi data engineer kaybetti
+    <a href="https://t.co/t1W8392Nrz">pic.twitter.com/t1W8392Nrz</a>
+  </p>
+  &mdash; İlter (@koseilteer) <a href="https://twitter.com/koseilteer/status/1461979376199819266?ref_src=twsrc%5Etfw">
+    November 20, 2021
+  </a>
+  <img src="./tw_image.jpg" alt={"tw-image"} />
+</blockquote>
+<script
+    async
+    src="https://platform.twitter.com/widgets.js"
+    charSet="utf-8"
+    />
+
 Insanların bir keyword yüzünden Pythonu bırakmasına gönlüm razı olmadı (!)
 Bu yüzden bu `elif` keywordunu Python da `elseif` ile değişmeye karar verdim.
 
@@ -193,8 +209,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 ...
 >>>
 ```
-
-![ProvidersHEll](./provider.jpg)
 
 Bingo!!
 

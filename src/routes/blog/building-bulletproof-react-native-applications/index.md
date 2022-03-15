@@ -1,8 +1,6 @@
 ---
 title: Kurşun Geçirmez React Native Uygulamaları Oluşturmak - I
-slug: '/building-bulletproof-react-native-applications'
-date: 2021-11-01
-banner: ./Banner.png
+date: 2022-01-01
 tags:
   - React
   - React Native
@@ -145,7 +143,7 @@ Genel olarak böyle bir dizin yapısı kullanıyorum. Kısaca bir özet geceyim,
   asenkron işlemler(network requestleri, local databaseden inital verilerin çekilmesi vb.) yapılır. Provider'ları da
   bu dosyaya yazarım ve genelde şuna benzer:
 
-![ProvidersHEll](./provider.jpg)
+![Provider Hell](./provider.jpg)
 
 Eğer SplashScreen kullancaksınız bütün asenkron işlemleri yaptıktan sonra Splash ekranını bu component içinde kaldırabilirsiniz.
 
@@ -195,7 +193,7 @@ e uygun işlem yapmasını, `--no-dimesion` ile _width_ ve _height_ değerlerini
 olmasını, `--svgo-config` config dosyasını yolunu ve sonunda oluşturduğu çıktıları `./src/components/icons` dizine
 çıkartmasını istediğimizi belirttik. Config dosyasında ise basitçe:
 
-```json
+```json:title=./scgorc.json
 { "plugins": [{ "removeViewBox": false }] } // viewboxu kaldırmak için plugin kullandık
 ```
 
@@ -224,7 +222,7 @@ import * as Icons from '@/components/icons/';
 <Icons.ArrowLeft height={15} width={15} color="red" />;
 ```
 
-### Boyutlar, Boşluklar {#sizes}
+### Boyutlar, Boşluklar
 
 Elinizde bir tasarım varsa tasarımda elemente gelip width, height değerlerini pixel cinsiden olduğu gibi
 React Native'e vermek çok mantıklı değil. Çünkü faklı ekranlarda aynı pixel değeri istediğimiz sonuçları vermeyebilir.
@@ -232,7 +230,7 @@ Bunu çözmek için kullandığım yöntem ise şöyle:
 
 Diyelim ki referans alıdğınız bir tasarım var
 
-![design](./provider.jpg)
+![Örnek dizayn](./design1.png)
 
 Görüldüğü üzere tasarımın frame width değeri **375px**. Dolayısıyla ekrana yerlemiş olan elementler de bu genişlik
 değeri baz alınarak yapılmış. Biz de tasarımı uygulamaya geçirirken buna benzer bir yöntem kullanacağız.
