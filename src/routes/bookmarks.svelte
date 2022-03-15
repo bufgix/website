@@ -18,6 +18,12 @@
 	export let bookmarks;
 </script>
 
+<h1 class="mb-2">Bookmarks</h1>
+<h6 class="font-serif text-gray-500">
+	Mostly software and frontend links that I come across while surfing the Internet.
+</h6>
+<hr class="my-6" />
+
 {#each bookmarks.items as bookmark}
 	<div class="my-9">
 		<a target="_blank" rel="external" href={bookmark.link}>

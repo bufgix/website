@@ -18,6 +18,8 @@
 	import dayjs from 'dayjs';
 	import relativeTime from 'dayjs/plugin/relativeTime.js';
 
+	import TheIcons from '$lib/components/TheIcons.svelte';
+
 	dayjs.extend(relativeTime);
 
 	import Header from '$lib/components/Header.svelte';
@@ -37,6 +39,7 @@
 	export let currentRoute;
 </script>
 
+<TheIcons />
 <main class="bg-light dark:bg-dark dark:text-white min-h-screen transition-colors duration-100">
 	<Header />
 
@@ -55,5 +58,5 @@
 
 <style lang="scss" global>
 	@use '../lib/style/index';
-	@use '../lib/style/atom-dark.css';
+	@use '../lib/style/one-dark.css';
 </style>

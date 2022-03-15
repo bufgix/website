@@ -4,6 +4,7 @@
 	import { PAGES } from '$lib/constants';
 	import { goto } from '$app/navigation';
 	import { getRandomCommandPlaceholder } from '$lib/utils';
+	import Icon from '$lib/components/Icon.svelte';
 
 	let placeholder = '';
 	let output = '';
@@ -111,8 +112,9 @@
 	{#if output}
 		<code class="text-sm md:text-base text-gray-400">{@html output}</code>
 	{/if}
+
 	<nav>
-		<ul class="flex flex-row">
+		<ul class="flex flex-row items-center">
 			<li>
 				<a href="/">Home</a>
 			</li>
@@ -124,6 +126,16 @@
 			</li>
 			<li>
 				<a href="/bookmarks">Bookmarks</a>
+			</li>
+			<li>
+				<a href="https://github.com/bufgix" target="_blank"
+					><Icon name="github" size="20px" class="fill-white" /></a
+				>
+			</li>
+			<li>
+				<a target="_blank" href="https://twitter.com/bufgix_">
+					<Icon name="twitter" size="21px" class="fill-white" />
+				</a>
 			</li>
 		</ul>
 	</nav>

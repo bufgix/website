@@ -20,7 +20,7 @@
 <ul>
 	{#each posts as post}
 		<li>
-			<a href={post.path}>{post.meta.title}</a>
+			<a class="no-underline" href={post.path}>{post.meta.title}</a>
 		</li>
 	{/each}
 </ul>
