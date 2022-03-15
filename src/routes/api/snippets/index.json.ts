@@ -14,12 +14,18 @@ export const get = async () => {
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	const pages = results.map(({ properties }) => {
-		return [properties.Page.title[0].mention.page.id, properties.Page.title[0].plain_text];
+	const pages = results.map(({ properties, created_time }) => {
+		const tags = properties.Tags.multi_select;
+		return {
+			pageId: properties.Page.title[0].mention.page.id,
+			pageTitle: properties.Page.title[0].plain_text,
+			tags,
+			created_time
+		};
 	});
 
 	const pagesContent = await Promise.all(
-		pages.map(async ([pageId, pageTitle]) => {
+		pages.map(async ({ pageId, pageTitle, tags, created_time }) => {
 			const n2m = new NotionToMarkdown({ notionClient: notion });
 			const mdBlocks = await n2m.pageToMarkdown(pageId);
 			const body = n2m.toMarkdownString(mdBlocks);
@@ -28,6 +34,8 @@ export const get = async () => {
 				id: pageId,
 				title: pageTitle,
 				path: `/snippets/${pageId}`,
+				tags,
+				created_time,
 				markdownBody: body,
 				html: await compile(body, {
 					remarkPlugins: [relativeImages, remarkHeadingId],

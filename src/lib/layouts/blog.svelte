@@ -10,6 +10,7 @@
 
 	export let title;
 	export let date;
+	export let tags;
 </script>
 
 <svelte:head>
@@ -19,9 +20,13 @@
 <article class="prose dark:prose-invert">
 	<div class="md:my-16">
 		<span class="font-serif text-xl">{dayjs(date).format('MMM DD, YYYY')} </span>
-		<h1 class="md:text-5xl">{title}</h1>
+		<h1 class="md:text-5xl mb-4">{title}</h1>
+		{#each tags as tag}
+			<span class="font-serif font-semibold mr-2">
+				#{tag}
+			</span>
+		{/each}
 	</div>
-	<p>Published: {date}</p>
 
 	<slot />
 </article>
