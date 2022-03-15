@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import type { WithTarget } from '../../app';
 	import { PAGES } from '$lib/constants';
 	import { goto } from '$app/navigation';
@@ -9,10 +10,22 @@
 	let placeholder = '';
 	let output = '';
 	let theme;
+	let searchInput: HTMLInputElement;
+	let glowEffect = false;
 
 	onMount(() => {
 		placeholder = getRandomCommandPlaceholder();
 		theme = localStorage.getItem('theme');
+
+		document.addEventListener('keydown', (e) => {
+			if (e.ctrlKey && e.key === 'k') {
+				searchInput.focus();
+				glowEffect = true;
+				setTimeout(() => {
+					glowEffect = !glowEffect;
+				}, 1000);
+			}
+		});
 	});
 
 	const COMMANDS = {
@@ -110,8 +123,9 @@
 			<code class="text-base md:text-2xl">faruk@webdev:$ </code>
 		</a>
 		<input
+			bind:this={searchInput}
 			autocapitalize="none"
-			class="w-full ml-2 text-base md:text-2xl focus-visible:outline-none font-mono bg-light dark:bg-dark"
+			class=" w-full ml-2 text-base md:text-2xl focus-visible:outline-none font-mono bg-light dark:bg-dark"
 			type="text"
 			{placeholder}
 			on:keyup={onKeyup}
@@ -178,5 +192,8 @@
 				content: ' ';
 			}
 		}
+	}
+	.prompt:focus + .prompt-text {
+		color: red !important;
 	}
 </style>
