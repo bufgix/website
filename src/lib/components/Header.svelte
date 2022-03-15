@@ -25,6 +25,7 @@
 				}
 				if (['light', 'dark'].includes(value)) {
 					localStorage.setItem('theme', value);
+					theme = value;
 					if (value === 'dark') document.documentElement.classList.add('dark');
 					else document.documentElement.classList.remove('dark');
 				} else {
