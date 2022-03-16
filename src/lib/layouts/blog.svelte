@@ -14,7 +14,7 @@
 </script>
 
 <svelte:head>
-	<title>{title} - Faruk's Tech Blog</title>
+	<title>{title} | Faruk Oruç</title>
 </svelte:head>
 
 <article class="prose dark:prose-invert">

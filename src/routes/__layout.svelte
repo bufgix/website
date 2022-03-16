@@ -39,6 +39,10 @@
 	export let currentRoute;
 </script>
 
+<svelte:head>
+	<title>Faruk Oruç</title>
+</svelte:head>
+
 <TheIcons />
 <main class="bg-light dark:bg-dark dark:text-white min-h-screen transition-colors duration-100">
 	<Header />

@@ -2,6 +2,12 @@
 	import TechStack from '$lib/components/TechStack.svelte';
 </script>
 
+<svelte:head>
+
+<title>Faruk Oruç</title>
+
+</svelte:head>
+
 # Ömer Faruk Oruç
 
 Hi, I am Faruk, a frontend developer. Working at [Binalyze](https://www.binalyze.com/)

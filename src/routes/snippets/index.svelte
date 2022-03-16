@@ -18,6 +18,10 @@
 	export let snippets;
 </script>
 
+<svelte:head>
+	<title>Snippets</title>
+</svelte:head>
+
 <h1 class="mb-2">Snippets</h1>
 <h6 class="font-serif text-gray-500">Quick Notes & Tips</h6>
 <hr class="my-6" />
