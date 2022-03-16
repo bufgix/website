@@ -24,7 +24,7 @@
 		name="twitter:description"
 		content={description || 'A tech blog generally about Frontend and Javascript'}
 	/>
-	<meta name="twitter:image" content="https://faruk-website.vercel.app/banner.png" />
+	<meta name="twitter:image" content="https://faruk-website.vercel.app/banner.jpg" />
 	<meta name="twitter:creator" content="@bufgix_" />
 </svelte:head>
 
