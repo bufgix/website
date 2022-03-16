@@ -41,6 +41,30 @@
 
 <svelte:head>
 	<title>Faruk Oruç</title>
+
+	<link rel="manifest" href="/site.webmanifest" crossorigin="anonymous" />
+	<meta name="theme-color" content="#f97316" />
+	<link rel="apple-touch-icon" sizes="192x192" href="/android-chrome-192x192.png" />
+	<link rel="apple-touch-icon" sizes="512x512" href="/android-chrome-512x512.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<meta name="description" content="A tech blog generally about Frontend and Javascript" />
+
+	<meta name="image" content="https://faruko.space/banner.jpg" data-react-helmet="true" />
+	<meta property="og:title" content="Faruk Oruç" />
+	<meta property="og:url" content="https://farukoruc.com" />
+	<meta property="og:description" content="A tech blog generally about Frontend and Javascript" />
+	<meta property="og:image" content="https://farukoruc.com/banner.jpg" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image:alt" content="A tech blog generally about Frontend and Javascript" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Faruk's Tech Blog" />
+	<meta name="twitter:url" content="https://farukoruc.com" />
+	<meta name="twitter:description" content="A tech blog generally about Frontend and Javascript" />
+	<meta name="twitter:image" content="https://farukoruc.com/banner.jpg" />
+	<meta name="twitter:image:alt" content="A tech blog generally about Frontend and Javascript" />
+	<meta name="twitter:creator" content="@bufgix_" />
 </svelte:head>
 
 <TheIcons />
