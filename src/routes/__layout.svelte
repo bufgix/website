@@ -58,11 +58,12 @@
 	<meta property="og:image" content="https://faruk-website.vercel.app//banner.png" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image:alt" content="A tech blog generally about Frontend and Javascript" />
+
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Faruk's Tech Blog" />
 	<meta name="twitter:url" content="https://faruk-website.vercel.app/" />
 	<meta name="twitter:description" content="A tech blog generally about Frontend and Javascript" />
-	<meta name="twitter:image" content="https://faruk-website.vercel.app//banner.png" />
+	<meta name="twitter:image" content="https://faruk-website.vercel.app/banner.png" />
 	<meta name="twitter:image:alt" content="A tech blog generally about Frontend and Javascript" />
 	<meta name="twitter:creator" content="@bufgix_" />
 </svelte:head>
