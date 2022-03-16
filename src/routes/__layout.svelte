@@ -26,7 +26,6 @@
 	import Footer from '$lib/components/Footer.svelte';
 
 	onMount(() => {
-		fetch('/api/insights', { method: 'POST', body: JSON.stringify({ path: currentRoute }) });
 		// set theme
 		if (
 			localStorage.theme === 'dark' ||
@@ -38,6 +37,10 @@
 		}
 	});
 	export let currentRoute;
+
+	$: {
+		fetch('/api/insights', { method: 'POST', body: JSON.stringify({ path: currentRoute }) });
+	}
 </script>
 
 <svelte:head>
