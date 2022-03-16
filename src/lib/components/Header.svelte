@@ -132,7 +132,7 @@
 		/>
 	</div>
 	{#if output}
-		<code class="text-sm md:text-base text-gray-400">{@html output}</code>
+		<code class="text-sm md:text-base text-gray-400 mt-2">{@html output}</code>
 	{/if}
 
 	<nav class="mt-2">
