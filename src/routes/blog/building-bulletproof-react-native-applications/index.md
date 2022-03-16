@@ -1,6 +1,7 @@
 ---
 title: Kurşun Geçirmez React Native Uygulamaları Oluşturmak - I
 date: 2022-01-01
+description: Bu yazıda gelir getirmesi istenen bir uygulamanın uygulama-içi-satın-alma, abonelik, metadata, build aşamaları, markete vermeden update etme gibi konuları ele alacağım.
 tags:
   - React
   - React Native
