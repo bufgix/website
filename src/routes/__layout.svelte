@@ -39,7 +39,9 @@
 	export let currentRoute;
 
 	$: {
-		fetch('/api/insights', { method: 'POST', body: JSON.stringify({ path: currentRoute }) });
+		fetch('/api/insights', { method: 'POST', body: JSON.stringify({ path: currentRoute }) }).catch(
+			() => {}
+		);
 	}
 </script>
 
