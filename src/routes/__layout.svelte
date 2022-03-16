@@ -1,10 +1,8 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
 
-	export const load: Load = async ({ url, fetch }) => {
+	export const load: Load = async ({ url }) => {
 		const currentRoute = url.pathname;
-
-		await fetch('/api/insights', { body: JSON.stringify({ path: currentRoute }) });
 
 		return {
 			props: {
@@ -28,6 +26,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 
 	onMount(() => {
+		fetch('/api/insights', { method: 'POST', body: JSON.stringify({ path: currentRoute }) });
 		// set theme
 		if (
 			localStorage.theme === 'dark' ||
