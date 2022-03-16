@@ -17,5 +17,3 @@ export const post: RequestHandler = async ({ request }) => {
 		status: 200
 	};
 };
-
-export const prerender = false;
