@@ -1,8 +1,10 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
 
-	export const load: Load = ({ url }) => {
+	export const load: Load = async ({ url, fetch }) => {
 		const currentRoute = url.pathname;
+
+		await fetch('/api/insights', { method: 'POST', body: JSON.stringify({ path: currentRoute }) });
 
 		return {
 			props: {
