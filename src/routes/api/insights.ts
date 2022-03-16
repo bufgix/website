@@ -9,7 +9,6 @@ const redis = new Redis({
 
 export const post: RequestHandler = async ({ request }) => {
 	const { path } = await request.json();
-	console.log('insights', path);
 
 	const old = parseInt(await redis.get(`${path}_visits`)) || 0;
 	await redis.set(`${path}_visits`, old + 1);
@@ -19,4 +18,4 @@ export const post: RequestHandler = async ({ request }) => {
 	};
 };
 
-export const prerender = false
+export const prerender = false;
