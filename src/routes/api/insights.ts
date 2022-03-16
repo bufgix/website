@@ -7,7 +7,7 @@ const redis = new Redis({
 	token: variables.UPSTASH_TOKEN
 });
 
-export const post: RequestHandler = async ({ request }) => {
+export const get: RequestHandler = async ({ request }) => {
 	const { path } = await request.json();
 	console.log('insights', path);
 

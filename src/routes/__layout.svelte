@@ -4,7 +4,7 @@
 	export const load: Load = async ({ url, fetch }) => {
 		const currentRoute = url.pathname;
 
-		await fetch('/api/insights', { method: 'POST', body: JSON.stringify({ path: currentRoute }) });
+		await fetch('/api/insights', { body: JSON.stringify({ path: currentRoute }) });
 
 		return {
 			props: {
