@@ -63,7 +63,7 @@
 	<meta name="twitter:title" content="Faruk's Tech Blog" />
 	<meta name="twitter:url" content="https://faruk-website.vercel.app/" />
 	<meta name="twitter:description" content="A tech blog generally about Frontend and Javascript" />
-	<meta name="twitter:image" content="https://faruk-website.vercel.app/banner.png" />
+	<meta name="twitter:image" content="https://faruk-website.vercel.app/banner.jpg" />
 	<meta name="twitter:image:alt" content="A tech blog generally about Frontend and Javascript" />
 	<meta name="twitter:creator" content="@bufgix_" />
 </svelte:head>
