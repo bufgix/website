@@ -39,9 +39,11 @@
 	export let currentRoute;
 
 	$: {
-		fetch('/api/insights', { method: 'POST', body: JSON.stringify({ path: currentRoute }) }).catch(
-			() => {}
-		);
+		fetch('/api/insights', {
+			method: 'POST',
+			body: JSON.stringify({ path: currentRoute })
+			// eslint-disable-next-line @typescript-eslint/no-empty-function
+		}).catch(() => {});
 	}
 </script>
 
