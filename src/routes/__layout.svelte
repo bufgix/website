@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
 
-	export const load: Load = ({ url }) => {
+	export const load: Load = async ({ url }) => {
 		const currentRoute = url.pathname;
 
 		return {
@@ -37,6 +37,14 @@
 		}
 	});
 	export let currentRoute;
+
+	$: {
+		fetch('/api/insights', {
+			method: 'POST',
+			body: JSON.stringify({ path: currentRoute })
+			// eslint-disable-next-line @typescript-eslint/no-empty-function
+		}).catch(() => {});
+	}
 </script>
 
 <svelte:head>
@@ -51,19 +59,19 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 	<meta name="description" content="A tech blog generally about Frontend and Javascript" />
 
-	<meta name="image" content="https://faruko.space/banner.png" data-react-helmet="true" />
+	<meta name="image" content="https://farukoruc.com/banner.png" data-react-helmet="true" />
 	<meta property="og:title" content="Faruk Oruç" />
-	<meta property="og:url" content="https://faruk-website.vercel.app/" />
+	<meta property="og:url" content="https://farukoruc.com/" />
 	<meta property="og:description" content="A tech blog generally about Frontend and Javascript" />
-	<meta property="og:image" content="https://faruk-website.vercel.app//banner.png" />
+	<meta property="og:image" content="https://farukoruc.com//banner.png" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image:alt" content="A tech blog generally about Frontend and Javascript" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Faruk's Tech Blog" />
-	<meta name="twitter:url" content="https://faruk-website.vercel.app/" />
+	<meta name="twitter:url" content="https://farukoruc.com/" />
 	<meta name="twitter:description" content="A tech blog generally about Frontend and Javascript" />
-	<meta name="twitter:image" content="https://faruk-website.vercel.app/banner.jpg" />
+	<meta name="twitter:image" content="https://farukoruc.com/banner.jpg" />
 	<meta name="twitter:image:alt" content="A tech blog generally about Frontend and Javascript" />
 	<meta name="twitter:creator" content="@bufgix_" />
 </svelte:head>
