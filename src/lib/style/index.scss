@@ -3,3 +3,21 @@
 body {
 	height: 100%;
 }
+
+article {
+	figure {
+		figcaption {
+			@apply text-sm text-center mt-0;
+		}
+	}
+}
+
+pre[class*='language-'] {
+	margin-top: 0 !important;
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+}
+
+.remark-code-title {
+	@apply text-sm text-white bg-pink-400 p-2 font-mono rounded-t-md;
+}
