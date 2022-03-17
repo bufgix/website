@@ -7,7 +7,7 @@
 			class="text-orange-500 no-underline font-serif">SvelteKit</a
 		>
 		by
-		<a class="no-underline" href="https://github.com/bufgix" target="_blank">@bufgix</a>;
+		<a class="no-underline" href="https://github.com/bufgix/website" target="_blank">@bufgix</a>;
 		hosted on <a href="https://vercel.com" target="_blank">Vercel</a>
 	</span>
 </footer>
