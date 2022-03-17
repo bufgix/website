@@ -15,6 +15,10 @@
 	export let posts: any[];
 </script>
 
+<svelte:head>
+	<title>Blog</title>
+</svelte:head>
+
 <h2 class="mb-2">Latest Blogs</h2>
 <hr class="mb-4" />
 <ul>
