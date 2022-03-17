@@ -1631,6 +1631,13 @@ rehype-figure@^1.0.1:
     hastscript "^6.0.0"
     unist-util-visit "^2.0.3"
 
+remark-code-titles@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/remark-code-titles/-/remark-code-titles-0.1.2.tgz#ae41b47c517eae4084c761a59a60df5f0bd54aa8"
+  integrity sha512-KsHQbaI4FX8Ozxqk7YErxwmBiveUqloKuVqyPG2YPLHojpgomodWgRfG4B+bOtmn/5bfJ8khw4rR0lvgVFl2Uw==
+  dependencies:
+    unist-util-visit "^1.4.0"
+
 remark-heading-id@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/remark-heading-id/-/remark-heading-id-1.0.0.tgz#a4a5c7c3de3c7fdee223d508760c6d6a5e0d9336"

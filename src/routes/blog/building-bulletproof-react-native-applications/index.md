@@ -47,7 +47,7 @@ bulabilirsiniz.
 
 Ayrıca ilerde proje içi tipler için bir `*.d.ts` dosyanızı oluşturmanızı tavsiye ederim.
 
-```ts
+```ts:./src/types/index.d.ts
 declare global {
 	type MyType = {
 		name: string;
@@ -150,7 +150,7 @@ Eğer SplashScreen kullancaksınız bütün asenkron işlemleri yaptıktan sonra
 
 Örnek olarak:
 
-```tsx
+```tsx:./src/bootstrap.tsx
 import React, { useEffect } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 
@@ -182,7 +182,7 @@ $ yarn add react-native-svg
 
 Gerekli kütüphaneleri kurduktan sonra npm scriptleri yardımıyla icon ekleme işlemini otomatikleştiriyorum
 
-```json
+```json:package.json
  "scripts": {
      //...
     "svgr": "svgr ./src/icons -d ./src/components/icons --native --no-dimensions --typescript --svgo-config .svgorc.json",
@@ -194,7 +194,7 @@ e uygun işlem yapmasını, `--no-dimesion` ile _width_ ve _height_ değerlerini
 olmasını, `--svgo-config` config dosyasını yolunu ve sonunda oluşturduğu çıktıları `./src/components/icons` dizine
 çıkartmasını istediğimizi belirttik. Config dosyasında ise basitçe:
 
-```json:title=./scgorc.json
+```json:./scgorc.json
 { "plugins": [{ "removeViewBox": false }] } // viewboxu kaldırmak için plugin kullandık
 ```
 
@@ -238,7 +238,7 @@ değeri baz alınarak yapılmış. Biz de tasarımı uygulamaya geçirirken buna
 Bunun için React Native tarafında `PixelRatio` kullanarak ekranın genişliğine göre şöyle bir
 _utility_ fonksiyon yazabiliriz
 
-```ts
+```ts:./src/utils/index.ts
 import { Dimensions, PixelRatio } from 'react-native';
 
 let screenWidth = Dimensions.get('window').width;
@@ -264,7 +264,7 @@ export function responsiveSize(size: number) {
 
 Daha sonra bu `responsiveSize` methodunu fontlarda, spacing değerlerinde kullanabilirsiniz.
 
-```ts
+```ts:./src/style/fonts.ts
 import { responsiveSize as rs } from '@/utils';
 
 export const size = {
@@ -284,7 +284,7 @@ export const size = {
 
 Api dizaynı projeden projeye değişebileceği gibi bir REST API ile çalışıyorsanız endpointleri servis dosyaları şeklinde yazmak mantıklı oluyor.
 
-```ts
+```ts:/api/HTTPClient.ts
 import Axios from 'axios';
 
 let baseURL = 'https://api.product.com/';
@@ -303,7 +303,7 @@ export default client;
 
 Diyelim ki API servisiniz size databasede olan araçları veriyor
 
-```ts
+```ts:/api/services/Cars.ts
 import HTTPClient from '../HTTPClient';
 
 export type Car = {
@@ -327,7 +327,7 @@ yakalamamız ve kullanıcıya bildirmemiz gerekir.
 Backend servisini basit bir istek yaptığımızı düşünelim. Sayfa açıldığı zaman
 verileri çeksin
 
-```tsx
+```tsx:/views/Cars/index.tsx 
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
 
@@ -364,7 +364,7 @@ bu şekilde tanımlamalar yapmak işkence olacaktır. Bunu daha efektif bir hale
 React tarafında backend servisinden veri çekerken [React Query](https://react-query.tanstack.com/) kullanıyorum.
 Basit olarak şöyle
 
-```tsx
+```tsx:/views/Cars/index.tsx 
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { useQuery } from 'react-query';
@@ -400,7 +400,7 @@ başladım.
 
 Store yazarken dikkat ettiğim 2 şey var. Biri store'u typescript ile doğru ayarlamak.
 
-```ts
+```ts:/store/user.slice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 expot type User  = {
@@ -429,7 +429,7 @@ export const { setUser } = appSlice.actions;
 export default userSlice.reducer;
 ```
 
-```ts
+```ts:/store/index.ts
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import UserSlice from './user.slice';
 
