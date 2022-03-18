@@ -22,6 +22,8 @@
 
 	dayjs.extend(relativeTime);
 
+	export let currentRoute;
+
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
@@ -36,7 +38,6 @@
 			document.documentElement.classList.remove('dark');
 		}
 	});
-	export let currentRoute;
 
 	$: {
 		fetch('/api/insights', {
@@ -77,6 +78,7 @@
 </svelte:head>
 
 <TheIcons />
+
 <main class="bg-light dark:bg-dark dark:text-white min-h-screen transition-colors duration-100">
 	<Header />
 

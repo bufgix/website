@@ -18,6 +18,7 @@ I created mobile apps with React Native for [PapyonApps](https://github.com/Papy
 <TechStack />
 
 Find me on [Github](https://github.com/bufgix)<br />
-Mail me at [hi@farukoruc.com](mailto:hi@farukoruc.com])
+Mail me at [ hi@farukoruc.com](mailto:hi@farukoruc.com])<br />
+Let's talk! 🤙 [Superpeer](https://superpeer.com/farukbfx)
 
 You can see my full [resume](/resume.pdf)
