@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
 	import type { WithTarget } from '../../app';
 	import { PAGES } from '$lib/constants';
 	import { goto } from '$app/navigation';
@@ -11,7 +10,6 @@
 	let output = '';
 	let theme;
 	let searchInput: HTMLInputElement;
-	let glowEffect = false;
 
 	onMount(() => {
 		placeholder = getRandomCommandPlaceholder();
@@ -20,10 +18,6 @@
 		document.addEventListener('keydown', (e) => {
 			if (e.ctrlKey && e.key === 'k') {
 				searchInput.focus();
-				glowEffect = true;
-				setTimeout(() => {
-					glowEffect = !glowEffect;
-				}, 1000);
 			}
 		});
 	});
