@@ -1,7 +1,7 @@
 ---
 title: Bu Siteyi Nasıl Oluşturdum
 date: 2022-03-16
-description: Bu yazıda bu web sitesini _Svelte_ ve _SvelteKit_ ile nasıl oluşturduğumu anlayacağım.
+description: Bu yazıda bu web sitesini Svelte ve SvelteKit ile nasıl oluşturduğumu anlayacağım.
 tags:
   - Svelte
   - SvelteKit
