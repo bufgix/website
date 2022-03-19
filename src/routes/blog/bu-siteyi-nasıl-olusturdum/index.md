@@ -1,6 +1,7 @@
 ---
 title: Bu Siteyi Nasıl Oluşturdum
 date: 2022-03-16
+description: Bu yazıda bu web sitesini _Svelte_ ve _SvelteKit_ ile nasıl oluşturduğumu anlayacağım.
 tags:
   - Svelte
   - SvelteKit
@@ -10,13 +11,12 @@ tags:
 Uzun zamandır aklımda kolayca içerik üretebileceğim, hızlı,
 sade bir blog yapmak vardı. Pek çok farklı şekilde iyi-kötü(çoğunlukla kötü)
 kendim için blog sayfaları oluşturmuştum. Backendini kendim yazdığım da oldu,
-sadece frontendini yazıp backendini [Strapi]()'ye verdiğim de. Ama hep
+sadece frontendini yazıp backendini [Strapi](https://strapi.io/)'ye verdiğim de. Ama hep
 bir şeyler istediğim gibi olmuyordu. Bir türlü ihtiyaçlarımı tam anlamıyla
 karşılayacak bir web sitesi yapamamıştım kendime. Ama son 1 haftadır
 Svelte ve SvelteKit ile istediğim siteyi oluşturduğumu düşünüyorum.
-Bu yazıda bu web sitesini nasıl oluşturduğumu, Svelte ve SvelteKit ile
-neler öğrendiğimi, SvelteKit'in modern web geliştime (SSR, SSG vb.) yöntemlerini
-nasıl kullandığını anlatacağım.
+Bu yazıda bu web sitesini _Svelte_ ve _SvelteKit_ ile nasıl oluşturduğumu
+anlayacağım
 
 ## İhtiyaçlarım
 
@@ -31,19 +31,19 @@ tasarım düşündüm. [Bu](https://antfu.me/),
 [bu](https://www.aleksandrhovhannisyan.com/) ve
 [bu](https://ademilter.com/) sitelerden ilham aldığım söylenebilir.
 
-- Hız
+- Hız.
 
 Yaptığım şey altı üstü blog post paylaşmak. Bu dönemde böyle bir iş
 çok fazla kaynak tüketmese gerek. Dolayısıyla sitenin ve sayfaların açılış
 hızı olabilidiğince hızlı olmalı.
 
-- Hızlıca içerik üretebilme
+- Hızlıca içerik üretebilme.
 
-Önceki denediğim sistemlerde,mbir şeyler paylaşmak
+Önceki denediğim sistemlerde, bir şeyler paylaşmak
 hiç kolay değildi. Kolaycadan kastım şu: Aklıma gelen veya paylaşmak
 istediğim bir şeyi telefonda olsam bile yazıp tek tuşla yayına almak.
 
-- Bol özellikli makale yazma formatı
+- Bol özellikli makale yazma formatı.
 
 Bir yazılım geliştirici olduğum için aşına olduğum metin yazma formatı
 `markdown`. Ama sadece bu da yetmiyor, yeri geliyor makalede interaktif
@@ -52,126 +52,163 @@ de gelişmiş olmalı.
 
 ## Neler kullandım
 
-- [Svelte]() - _Kullandığım frontend framework_
-- [SvelteKit]() - _Svelte ile birlikte çalışan, server-side-rendering (SSR),
+- [Svelte](https://svelte.dev/) - _Kullandığım frontend framework_
+- [SvelteKit](https://kit.svelte.dev/) - _Svelte ile birlikte çalışan, server-side-rendering (SSR),
   static-site-generator (SSG) için framework_
-- [Tailwind]() - _CSS framework_
-- [MDsveX]() - _Markdown ve SvelteKit ile birlikte çalışan, markdown dosyalarını
+- [Tailwind](https://tailwindcss.com/) - _CSS framework_
+- [MDsveX](https://mdsvex.pngwn.io/) - _Markdown ve SvelteKit ile birlikte çalışan, markdown dosyalarını
   process eden kütüphane_
-- [Notion.io]() - _[snippets](/snippets) bölümü için kullandığım platform_
-- [Upstash]() - Sayfaların ne kadar görüntülenme aldığını tutmak için `key-value`
+- [Notion.so](https://www.notion.so) - _[snippets](/snippets) bölümü için kullandığım platform_
+- [Upstash](https://upstash.com/) - Sayfaların ne kadar görüntülenme aldığını tutmak için `key-value`
   database
-- [Raindrop.io]() - _[bookmarks](/bookmarks) bölümü için kullandığım platform_
+- [Raindrop.io](https://raindrop.io/) - _[bookmarks](/bookmarks) bölümü için kullandığım platform_
 
-## Başlayalım
+## SvelteKit ve SSG(Static Site Generator) nasıl çalışıyor?
 
-Basitçe SvelteKit'i kullanarak projeyi oluşturuyorum.
+Bir SvelteKit uygulaması oluşturduğunuzda, `/routes` adlı bir dizinle
+gelir. Bu dizin içindeki dosyalara göre web sitenizin yolları belirlenir.
 
-```bash
-$ npm init svelte@next awesome-blog
-npx: installed 5 in 3.083s
+![Svelte Routing](./svelte_routing.png)
 
-create-svelte version 2.0.0-next.125
+Bu sayfalar ayrıca static olarak `.html` dosyalarına dönüştürülebilir. Eğer
+`svete.config.js` dosyasında `kit.prerender.default = true` yaparsanız,
+varsayılan olarak `/routes` içindeki dosyaları statik olarak çalışmasını
+sağlarsınız. `build` komutunu çalıştırmanız yeterli olur.
 
-Welcome to SvelteKit!
+![Svelte Static Adapter](./svelte_proc.png)
 
-This is beta software; expect bugs and missing features.
+Eger backend'e işiniz düştüyse bunu bir endpoint yardımıyla çözebilirsiniz.
 
-Problems? Open an issue on https://github.com/sveltejs/kit/issues if none exists already.
+### Endpoints
 
-✔ Which Svelte app template? › Skeleton project
-✔ Use TypeScript? … No / Yes - yes
-✔ Add ESLint for code linting? … No / Yes - yes
-✔ Add Prettier for code formatting? … No / Yes - yes
-✔ Add Playwright for browser testing? … No / Yes - no
+SvelteKit uygulamalarınızda kendinize özel api uçları tasarlayabilirsiniz.
+Bu uçlarda çalışacak kodlar backend içinde çalışır. Ben tamamen static
+bir site yapmak istediğim için bu uçları, build alınırken çalıştırıp
+sonuçlarını static olarak dosyalara yazacağım... Yani SvelteKit yazacak.
 
-Your project is ready!
+Bir endpoint içine temel HTTP methodları için ayrı ayrı fonksiyonlar
+yazılabilir. Bunlar:
 
-$ cd awesome-blog
-$ yarn install
-$ yarn dev
+```js
+export function get(event) {...}  // GET
+export function post(event) {...}  // POST
+export function put(event) {...}   // PUT
+export function patch(event) {...} // PATCH
+export function del(event) {...}   // DELETE
 ```
 
-Dosya yapısına bakalım.
+Benim işime şuan `GET` methodu yaradığı için `get` fonskiyonunu yazacağım
+sadece.
 
-```bash
-$  tree -L 3  -C --dirsfirst
-.
-├── src
-│   ├── routes
-│   │   └── index.svelte
-│   ├── app.d.ts
-│   └── app.html
-├── static
-│   └── favicon.png
-├── README.md
-├── package.json
-├── svelte.config.js
-└── tsconfig.json
+```ts:/routes/api/bookmarks.json.ts
+import type { RequestHandler } from '@sveltejs/kit';
+import variables from '$lib/variables';
 
-3 directories, 8 files
+const RAINDROP_URL = 'https://api.raindrop.io/rest/v1/raindrops/0?perpage=30';
+
+export const get: RequestHandler = async () => {
+	const bookmarks = await (
+		await fetch(RAINDROP_URL, {
+			headers: {
+				Authorization: `Bearer ${variables.RAINDROP_API_KEY}`
+			}
+		})
+	).json();
+
+	return {
+		body: {
+			bookmarks
+		}
+	};
+};
 ```
 
-Gördüğünüz gibi SvelteKit, oldukça sade bir dosya yapısıyla geliyor.
-`/routes` dizinindeki `.svelte` dosyaları sitemizin yollarını belirliyor.
-`index.svlete` ana sayfa içeriğimiz oluyor.
+Burada [Raindrop](https://raindrop.io/) ile kişisel bookmarklarımı çekiyoum. Ardından
+aldığım değeri olduğu gibi endointden dönüyorum.
 
-```bash
-$ yarn dev
+Sonrasında tarayıcımda `/api/bookmarks.json`'a gidersem dönen değeri
+görebilirim.
+
+![](./img_6.png)
+
+Burada dikkat etmem gereken bu endpointin build zamanda çalışması için
+dosya ismin `*.json.{js,ts}` şeklinde yazmış olmam. Sveltekit bu formatı
+anlayıp build esnasında bu dosyayı çalıştırıyor ve sonuçlarını
+`bookmarks.json` olarak bir dosyaya yazıyor.
+
+Şimdi bunu sayfa componentimin içinde nasıl göstereceğim?
+
+Svelte bunun için bana güzel bir API sunmuş.
+Componentin server tarafında çalışmasını
+istediğim kodlarını `<script context="module" />` tagları
+arasına yazarsam, yazdığımız endpoint ile haberleşebilirim.
+
+```svelte:/routes/bookmarks.svelte
+<script context="module" lang="ts">
+	import type { Load } from '@sveltejs/kit';
+
+    // `load` özel bir fonksiyon. Bu sayfa açılmak istendiğinde
+    // SvelteKit bu fonksiyonu çalıştıracak
+    // dönen değeri aşağıdaki componente `props` olarak
+    // gönderecek
+	export const load: Load = async function ({ fetch }) {
+		const { bookmarks } = await (await fetch('/api/bookmarks.json')).json();
+
+		return {
+			props: {
+				bookmarks // aşağıya props olarak gönderiyorum
+			}
+		};
+	};
+</script>
+
+<script>
+  export let bookmarks; // Artık backend'den gelen değerim fronend'de
+</script>
+
+<h1 class="mb-2">Bookmarks</h1>
+<hr class="my-6" />
+
+{#each bookmarks.items as bookmark}
+  <div class="my-9">
+    <h1>{bookmark.title}</h1>
+  </div>
+{/each}
 ```
 
-![](./img.png)
+Bu sitedeki [`/bookmarks`](/bookmarks) yolundan bu kodların çıktısına
+bakabilirsiniz.
 
-Güzel sayfayı istediğimiz gibi değiştirebilriz
+Aynı şekilde [`/snippets`](/snippets) kısmını da bu yolla yaptım. Aynı
+şeyleri yaptığım için anlatmaya gerek duymuyorum. [Notion.so](https://www.notion.so/)'dan gelen
+verileri parse ettiğim sıkıcı kodlar var sadece :)
+İsteyen [buradan](https://github.com/bufgix/website/blob/master/src/routes/api/snippets/index.json.ts) bakabilir
 
-```svelte
-<h1>Awesome Blog!</h1>
 
-<h3>Posts</h3>
-<p>Blog posts will be here.</p>
+### Blog Postlar ve MDsveX
+Peki, blog postlar için de `.svelte` dosyaları mı kullanıyorum?
+Tabii ki hayır. Bunun için [MDsveX](https://mdsvex.pngwn.io/) markdown processor kullanıyorum.
+Yaptığı şey basitçe `/routes` içinde bir `.md` dosyası varsa bunu parse
+edip aynı bir svelte sayfası gibi göstermek. Bunu yaparken bol
+eklenti desteği, metadata, layouts, syntax highlighting gibi pek çok
+özelliğini de kullanbiliyorsunuz.
+
+![](./mdsvex.png)
+
+
+Kullandığım eklentiler ise şu şekilde:
+
+```js
+import relativeImages from 'mdsvex-relative-images';
+import remarkHeadingId from 'remark-heading-id';
+import figure from 'rehype-figure';
+import codeTitle from 'remark-code-titles';
+
+mdsvex({
+	extensions: ['.md', '.svx'],
+	remarkPlugins: [relativeImages, remarkHeadingId, codeTitle],
+	rehypePlugins: [figure]
+});
 ```
 
-![](./img_4.png)
-
-Hemen başka sayfalar ekleyebiliriz. Mesela `/about`.
-
-```svelte
-<!--/routes/about.svelte-->
-<h1>About me</h1>
-
-<h3>👋 Hi</h3>
-
-<p>
-	I am a software developer with a passion for creating beautiful, intuitive, and user-friendly
-	applications.
-</p>
-```
-
-![](./img_2.png)
-
-### Layout eklemek
-Çoğu sitede sayfalar değişe bile değişmeyecek yerler vardır.
-Mesela `header` çok fazla değişmez. İşte bunun gibi durumlarda
-her sayfaya `header` yazmak yerine SvelteKit'in bize sağladığı
-`__layout.svelte` den yararlanabiliriz.  `__layout.svelte` dosyasının 
-ismi SvelteKit için özeldir.
-
-```svelte
-<!-- __layout.svelte -->
-<header>Hi, I'm a header</header>
-
-<main>
-	<slot />
-</main>
-
-<footer>Hello, I'm the footer.</footer>
-
-```
-
-![](./img_5.png)
-
-### Markdown Destekli Sayfalar
-
-Bunun için [mdsvex](https://mdsvex.pngwn.io/) kullancağız.
-Mdsvex kısaca `/routes` dizinini içine `markdown` dosyaları da
-yazmamızı sağlıyor.
+Bu websitesinin kodlarına açık kaynak olarak [Github](https://github.com/bufgix/website)'dan erişebilirsiniz.
