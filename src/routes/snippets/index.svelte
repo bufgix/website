@@ -27,7 +27,7 @@
 <hr class="my-6" />
 <section>
 	{#each snippets as { html: { code }, title, id, tags, created_time }}
-		<article class="prose-headings:text-2xl mb-20 md:mb-10">
+		<article class="prose-headings:text-2xl mb-20 md:mb-10 break-words">
 			<a class="no-underline" sveltekit:prefetch href={`/snippets/${id}`}>
 				<h1 class="mb-0">{title}</h1>
 			</a>
