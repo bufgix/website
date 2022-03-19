@@ -212,3 +212,9 @@ mdsvex({
 ```
 
 Bu websitesinin kodlarına açık kaynak olarak [Github](https://github.com/bufgix/website)'dan erişebilirsiniz.
+
+
+### Kaynakça
+
+- https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog
+- https://kit.svelte.dev/
