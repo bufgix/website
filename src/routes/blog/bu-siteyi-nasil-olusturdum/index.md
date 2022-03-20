@@ -16,7 +16,7 @@ bir şeyler istediğim gibi olmuyordu. Bir türlü ihtiyaçlarımı tam anlamıy
 karşılayacak bir web sitesi yapamamıştım kendime. Ama son 1 haftadır
 Svelte ve SvelteKit ile istediğim siteyi oluşturduğumu düşünüyorum.
 Bu yazıda bu web sitesini _Svelte_ ve _SvelteKit_ ile nasıl oluşturduğumu
-anlayacağım
+anlatacağım
 
 ## İhtiyaçlarım
 
