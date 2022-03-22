@@ -14,11 +14,15 @@
 </script>
 
 <script>
+	import dayjs from 'dayjs';
 	import { fixCodeBlock } from '$lib/utils';
 
-	export let code;
+	export let code, title, created_time;
 </script>
 
-<div>
+<article>
+	<h1 class="mb-0">{title}</h1>
+	<i class="text-gray-500">{dayjs(created_time).fromNow()}</i>
+
 	{@html fixCodeBlock(code)}
-</div>
+</article>

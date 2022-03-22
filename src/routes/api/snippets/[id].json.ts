@@ -12,7 +12,14 @@ const notion = new Client({ auth: variables.NOTION_SECRET });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export const get: RequestHandler<{ id: string }> = async (event) => {
-	const mdBlocks = await n2m.pageToMarkdown(event.params.id);
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	const [{ properties, created_time }, mdBlocks] = await Promise.all([
+		await notion.pages.retrieve({ page_id: event.params.id }),
+		await n2m.pageToMarkdown(event.params.id)
+	]);
+	const title = properties.title.title[0].text.content;
+
 	const body = n2m.toMarkdownString(mdBlocks);
 	const htmlBody = await compile(body, {
 		remarkPlugins: [relativeImages, remarkHeadingId],
@@ -23,7 +30,9 @@ export const get: RequestHandler<{ id: string }> = async (event) => {
 		body: {
 			id: event.params.id,
 			markdownBody: body,
-			html: htmlBody as any
+			html: htmlBody as any,
+			title,
+			created_time
 		}
 	};
 };
