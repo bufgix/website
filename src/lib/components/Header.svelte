@@ -130,7 +130,7 @@
 	{/if}
 
 	<nav class="mt-2">
-		<ul class="flex flex-row items-center">
+		<ul class="flex flex-row flex-wrap items-center">
 			<li>
 				<a href="/">Home</a>
 			</li>
@@ -142,6 +142,9 @@
 			</li>
 			<li>
 				<a href="/bookmarks">Bookmarks</a>
+			</li>
+			<li on:click={COMMANDS.random.func}>
+				<a href="#">I'm feeling lucky</a>
 			</li>
 			<li>
 				<a href="https://github.com/bufgix" target="_blank"
