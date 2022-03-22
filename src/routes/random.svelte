@@ -9,4 +9,6 @@
 			redirect: path
 		};
 	};
+
+	export const prerender = false
 </script>
