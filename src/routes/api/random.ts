@@ -1,9 +1,11 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import { get as getPosts } from './posts.json';
-import { get as getSnippets } from './snippets/index.json';
+import variables from '$lib/variables';
 
 export const get: RequestHandler = async ({ request }) => {
-	const [{ body: posts }, { body: snippets }] = await Promise.all([getPosts(), getSnippets()]);
+	const [posts, snippets] = await Promise.all([
+		await (await fetch(`${variables.DOMAIN}/api/posts.json`)).json(),
+		await (await fetch(`${variables.DOMAIN}/api/snippets.json`)).json()
+	]);
 
 	const allContent = [...posts, ...snippets];
 	const randomContent = allContent[Math.floor(Math.random() * allContent.length)];
