@@ -1,9 +1,8 @@
-import type { RequestHandler } from '@sveltejs/kit';
 import variables from '$lib/variables';
 
 const RAINDROP_URL = 'https://api.raindrop.io/rest/v1/raindrops/0?perpage=30';
 
-export const get: RequestHandler = async () => {
+export const get = async () => {
 	const bookmarks = await (
 		await fetch(RAINDROP_URL, {
 			headers: {
