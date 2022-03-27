@@ -1,4 +1,4 @@
-## Personel Web Site
+## Personal Web Site
 
 ![preview](preview.png)
 
