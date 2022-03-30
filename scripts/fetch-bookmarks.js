@@ -4,7 +4,7 @@ import 'dotenv/config';
 
 // Lol
 
-console.log(process.env.RAINDROP_API_KEY)
+console.log(process.env)
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
