@@ -177,6 +177,10 @@
 				list-style: none;
 				margin: 0;
 				padding: 0;
+
+				li {
+					@apply mr-1;
+				}
 			}
 		}
 

@@ -4,6 +4,10 @@ slug: "/bookmarks"
 ---
 
 
+- [Axios İpuçları #4: localForage ile HTTP Yanıtlarını IndexedDB’de Önbelleklemek](https://tugsanunlu.medium.com/axios-i%CC%87pu%C3%A7lar%C4%B1-4-localforage-ile-http-yan%C4%B1tlar%C4%B1n%C4%B1-indexeddbde-%C3%B6nbelleklemek-c246ebf6d8f8)
+- [When does React render your component? - zhenghao](https://zhenghao.io/posts/react-rerender)
+- [Preemptive memoization in React is probably not Evil (yet) - zhenghao](https://zhenghao.io/posts/memo-or-not)
+- [Your SSR is slow & your devtools are lying to you - DEV Community](https://dev.to/mlrawlings/your-ssr-is-slow-your-devtools-are-lying-to-you-3056)
 - [Let's learn SvelteKit by building a static Markdown blog from scratch - Josh Collinsworth blog](https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog)
 - [Writing Better CSS | Aleksandr Hovhannisyan](https://www.aleksandrhovhannisyan.com/blog/writing-better-css/)
 - [Hooks: React’s do-notation || Devansh Jethmalani / Writings](https://devanshj.me/writings/hooks-reacts-do-notation)
@@ -30,9 +34,5 @@ slug: "/bookmarks"
 - [Rust Is The Future of JavaScript Infrastructure – Lee Robinson](https://leerob.io/blog/rust)
 - [/dev/null: Anti-Cheat Kernel Driver - League of Legends](https://www.leagueoflegends.com/en-us/news/dev/dev-null-anti-cheat-kernel-driver/)
 - [My love letter to XState and statecharts ♥](https://dev.to/timdeschryver/my-love-letter-to-xstate-and-statecharts-287b)
-- [Write code that is easy to delete, not easy to... — programming is terrible](https://programmingisterrible.com/post/139222674273/how-to-write-disposable-code-in-large-systems)
-- [The many meanings of $ in Svelte - Geoff Rich](https://geoffrich.net/posts/svelte-$-meanings/)
-- [Defensive CSS - Ahmad Shadeed](https://ishadeed.com/article/defensive-css/)
-- [Old CSS, new CSS / fuzzy notepad](https://eev.ee/blog/2020/02/01/old-css-new-css/)
 
     
