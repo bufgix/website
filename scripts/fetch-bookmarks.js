@@ -4,6 +4,7 @@ import 'dotenv/config';
 
 // Lol
 
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 fetch('https://api.raindrop.io/rest/v1/raindrops/0?perpage=30', {
