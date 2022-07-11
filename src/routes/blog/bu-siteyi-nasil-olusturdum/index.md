@@ -8,7 +8,7 @@ tags:
   - SSG
 ---
 
-Uzun den zamandır aklımda kolayca içerik üretebileceğim, hızlı,
+Uzun zamandır aklımda kolayca içerik üretebileceğim, hızlı,
 sade bir blog yapmak vardı. Pek çok farklı şekilde iyi-kötü(çoğunlukla kötü)
 kendim için blog sayfaları oluşturmuştum. Backendini kendim yazdığım da oldu,
 sadece frontendini yazıp backendini [Strapi](https://strapi.io/)'ye verdiğim de. Ama hep
