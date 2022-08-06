@@ -13,7 +13,7 @@
 Hi, I am Faruk, a frontend developer. Working at [Binalyze](https://www.binalyze.com/)
 
 Creator of the open source projects. [Github CV](https://github.com/bufgix/github-cv), [Passwall Extension](https://github.com/passwall/passwall-extension), [Github Blog](https://github.com/bufgix/github-blog) and [React Native Notify](https://github.com/Papyon-Apps/rn-notify).
-I created mobile apps with React Native for [PapyonApps](https://github.com/Papyon-Apps/)
+Currently I am working on create cool mobile apps with React Native in [PapyonApps](https://github.com/Papyon-Apps/)
 
 <TechStack />
 
