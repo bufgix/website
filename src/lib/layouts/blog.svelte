@@ -1,4 +1,6 @@
 <script context="module">
+	import { Claps } from 'svelte-claps';
+
 	import h2 from '$lib/components/H2.svelte';
 	import h3 from '$lib/components/H2.svelte';
 
@@ -41,3 +43,5 @@
 
 	<slot />
 </article>
+
+<Claps  fixed="center" replyUrl="https://twitter.com/bufgix_" />

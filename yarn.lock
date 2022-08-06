@@ -2189,9 +2189,10 @@ svelte-check@^2.2.6:
     svelte-preprocess "^4.0.0"
     typescript "*"
 
-"svelte-claps@file:../../Documents/svelte-claps-0.0.1.tgz":
-  version "0.0.1"
-  resolved "file:../../Documents/svelte-claps-0.0.1.tgz#a40f8776d8a35a3c2bd3e8bb767ad2bbdf4d2a5e"
+svelte-claps@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/svelte-claps/-/svelte-claps-0.0.4.tgz#e4d4b81c77da66ef7e2e36b014de4e8054c9e071"
+  integrity sha512-qdYG4HQf3JS4hT7epPveFw99Y0w9now5QBdJu5p1X+Iv9EiHp/V3gCnPcCjVBSWkvJHJyq3gjY1DkqjJw0rGng==
   dependencies:
     "@upstash/redis" "^1.11.0"
     lodash "^4.17.21"
