@@ -7,7 +7,7 @@ const redis = new Redis({
 	token: variables.UPSTASH_TOKEN
 });
 
-export const post: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request }) => {
 	const { path } = await request.json();
 
 	const old = parseInt(await redis.get(`${path}_visits`)) || 0;

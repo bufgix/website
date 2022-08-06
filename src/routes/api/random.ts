@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import variables from '$lib/variables';
 
-export const get: RequestHandler = async ({ request }) => {
+export const GET: RequestHandler = async ({ request }) => {
 	const [posts, snippets] = await Promise.all([
 		await (await fetch(`${variables.DOMAIN}/api/posts.json`)).json(),
 		await (await fetch(`${variables.DOMAIN}/api/snippets.json`)).json()

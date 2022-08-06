@@ -11,7 +11,7 @@ import variables from '$lib/variables';
 const notion = new Client({ auth: variables.NOTION_SECRET });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
-export const get: RequestHandler<{ id: string }> = async (event) => {
+export const GET: RequestHandler<{ id: string }> = async (event) => {
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
 	const [{ properties, created_time }, mdBlocks] = await Promise.all([

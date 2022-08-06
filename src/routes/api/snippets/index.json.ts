@@ -9,7 +9,7 @@ import figure from 'rehype-figure';
 const notion = new Client({ auth: variables.NOTION_SECRET });
 const databaseId = variables.NOTION_DB_ID;
 
-export const get = async () => {
+export const GET = async () => {
 	const { results } = await notion.databases.query({ database_id: databaseId });
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
