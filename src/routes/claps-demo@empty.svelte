@@ -5,6 +5,10 @@
 	let replyUrl = 'https://github.com/bufgix/svelte-claps';
 </script>
 
+<svelte:head>
+	<title>Svelte-claps</title>
+</svelte:head>
+
 <section class="pt-4">
 	<h1>svelte-claps</h1>
 	<p class="m-0">Adds clap button (like medium) to any page for your SvelteKit apps.</p>
