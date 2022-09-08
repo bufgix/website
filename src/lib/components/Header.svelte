@@ -144,7 +144,7 @@
 				<a href="/bookmarks">Bookmarks</a>
 			</li>
 			<li on:click={COMMANDS.random.func}>
-				<a href="#">I'm feeling lucky</a>
+				<button>I'm feeling lucky</button>
 			</li>
 			<li>
 				<a href="https://github.com/bufgix" target="_blank"
@@ -180,6 +180,12 @@
 
 				li {
 					@apply mr-1;
+
+					button {
+						color: var(--tw-prose-links);
+						text-decoration: underline;
+						font-weight: 500;
+					}
 				}
 			}
 		}
@@ -190,8 +196,5 @@
 				content: ' ';
 			}
 		}
-	}
-	.prompt:focus + .prompt-text {
-		color: red !important;
 	}
 </style>

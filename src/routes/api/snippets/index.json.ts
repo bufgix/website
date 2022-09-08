@@ -5,6 +5,7 @@ import { compile } from 'mdsvex';
 import relativeImages from 'mdsvex-relative-images';
 import remarkHeadingId from 'remark-heading-id';
 import figure from 'rehype-figure';
+import { log } from 'util';
 
 const notion = new Client({ auth: variables.NOTION_SECRET });
 const databaseId = variables.NOTION_DB_ID;
@@ -12,17 +13,26 @@ const databaseId = variables.NOTION_DB_ID;
 export const GET = async () => {
 	const { results } = await notion.databases.query({ database_id: databaseId });
 
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore
-	const pages = results.map(({ properties, created_time }) => {
-		const tags = properties.Tags.multi_select;
-		return {
-			pageId: properties.Page.title[0].mention.page.id,
-			pageTitle: properties.Page.title[0].plain_text,
-			tags,
-			created_time
-		};
-	});
+	const pages = results
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
+		.map(({ properties, created_time }) => {
+			const tags = properties.Tags.multi_select;
+			try {
+				return {
+					pageId: properties.Page.title[0].mention.page.id,
+					pageTitle: properties.Page.title[0].plain_text,
+					tags,
+					created_time
+				};
+			} catch (error) {
+				if (error instanceof TypeError) {
+					return null;
+				}
+				throw error;
+			}
+		})
+		.filter((page) => page !== null);
 
 	const pagesContent = await Promise.all(
 		pages.map(async ({ pageId, pageTitle, tags, created_time }) => {
