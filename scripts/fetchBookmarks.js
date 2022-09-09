@@ -5,8 +5,6 @@ import MD5 from 'crypto-js/md5.js';
 
 const hashFile = path.join(process.cwd(), 'hash');
 
-console.log(process.env);
-
 async function fetchBookmarks() {
 	const bookmarks = await (
 		await fetch('https://api.raindrop.io/rest/v1/raindrops/0?perpage=30', {
