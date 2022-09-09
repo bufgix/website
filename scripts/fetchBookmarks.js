@@ -16,13 +16,13 @@ async function fetchBookmarks() {
 		})
 	).json();
 
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore
-	console.log('Result:', bookmarks.result);
-	console.log(bookmarks);
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore
-	bookmarks.items.forEach((b) => console.log(b.link));
+	console.log('Result:', bookmarks['result']);
+	if (bookmarks['result'] === false) {
+		console.log('Error fetching bookmarks!');
+		process.exit(1);
+	}
+
+	bookmarks['items'].forEach((b) => console.log(b.link));
 
 	const oldHash = fs.existsSync(hashFile) ? fs.readFileSync(hashFile, 'utf8') : '';
 	const newHash = MD5(JSON.stringify(bookmarks)).toString();
