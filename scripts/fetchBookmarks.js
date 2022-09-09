@@ -16,6 +16,7 @@ async function fetchBookmarks() {
 	const oldHash = fs.existsSync(hashFile) ? fs.readFileSync(hashFile, 'utf8') : '';
 	const newHash = Buffer.from(JSON.stringify(bookmarks)).toString('base64');
 	if (oldHash === newHash) {
+		console.log('No changes! Current hash:', newHash);
 		process.exit(1);
 	} else {
 		fs.writeFileSync(hashFile, newHash);
