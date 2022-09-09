@@ -21,4 +21,4 @@ Find me on [Github](https://github.com/bufgix)<br />
 Mail me at [ hi@farukoruc.com](mailto:hi@farukoruc.com)<br />
 Let's talk! 🤙 [Superpeer](https://superpeer.com/farukbfx)
 
-You can see my full [resume](/resume.pdf)
+You can see my full [resume](https://docs.google.com/document/d/1tN6QMFZBXqTrzR9U2Gfjbctsv6FWRjSCq3qcAZWMQ74/edit?usp=sharing)
