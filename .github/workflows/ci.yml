@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - name: 🍽️ Get working copy
+        uses: actions/checkout@v3
+
+      - name: Set up node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install deps
+        run: yarn install
+
+      - name: Update bookmarks
+        env:
+          RAINDROP_API_KEY: ${{ secrets.RAINDROP_API_KEY }}
+        run: yarn fetch:bookmarks
+
+      - name: Deploy
+        run: |
+          git config user.name "bufgix"
+          git config user.email "ooruc471@yandex.com"
+          git add .
+          git commit -am "feat(auto generate): Updated content"
+          git push --all -f https://${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
