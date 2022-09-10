@@ -5,7 +5,6 @@ import { compile } from 'mdsvex';
 import relativeImages from 'mdsvex-relative-images';
 import remarkHeadingId from 'remark-heading-id';
 import figure from 'rehype-figure';
-import { log } from 'util';
 
 const notion = new Client({ auth: variables.NOTION_SECRET });
 const databaseId = variables.NOTION_DB_ID;

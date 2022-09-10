@@ -5,6 +5,9 @@
 
 	let loading = true;
 	let result = null;
+	let audio: HTMLAudioElement = null;
+
+
 	onMount(async () => {
 		loading = true;
 		try {
@@ -20,16 +23,35 @@
 			loading = false;
 		}
 	});
+
+	const toggleSample = () => {
+		if (audio) {
+			audio.pause();
+			audio = null;
+		} else {
+			audio = new Audio(result.previewUrl);
+			audio.play();
+		}
+	};
 </script>
 
 <div class="flex items-center">
-	<Icon name="spotify" size="24px" class="mr-2" />
 	{#if !loading && result}
-		<span in:fly={{ y: -10 }}>
+		<button on:click={toggleSample}>
+			<img
+				src={result.albumImageUrl}
+				alt={result.album}
+				class="rounded-full mr-2 m-0"
+				width="24px"
+				height="24px"
+			/>
+		</button>
+		<a class="nostyle-a" target="_blank" href={result.songUrl} in:fly={{ y: -10 }}>
 			<b>{result.title}</b> <span class="mx-1"> - </span>
 			<span>{result.artist}</span>
-		</span>
+		</a>
 	{:else}
+		<Icon name="spotify" size="24px" class="mr-2" />
 		<b>Not Playing</b> <span class="mx-1"> - </span> <span>Spotify</span>
 	{/if}
 </div>

@@ -49,12 +49,14 @@ export const GET: RequestHandler = async () => {
 	}
 
 	const song = await response.json();
+	console.log(song);
 	const isPlaying = song.is_playing;
 	const title = song.item.name;
 	const artist = song.item.artists.map((_artist) => _artist.name).join(', ');
 	const album = song.item.album.name;
 	const albumImageUrl = song.item.album.images[0].url;
 	const songUrl = song.item.external_urls.spotify;
+	const previewUrl = song.item.preview_url;
 
 	return {
 		status: 200,
@@ -64,7 +66,8 @@ export const GET: RequestHandler = async () => {
 			artist,
 			isPlaying,
 			songUrl,
-			title
+			title,
+			previewUrl
 		}
 	};
 };

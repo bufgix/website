@@ -21,3 +21,10 @@ pre[class*='language-'] {
 .remark-code-title {
 	@apply text-sm text-white bg-pink-400 p-2 font-mono rounded-t-md;
 }
+
+.nostyle-a {
+	cursor: pointer;
+	color: inherit !important;
+	text-decoration: none !important;
+	font-weight: inherit !important;
+}
