@@ -15,7 +15,7 @@
 			if (res.status === 204) {
 				return;
 			}
-			result = await (await fetch('/api/spotify')).json();
+			result = await res.json();
 			loading = false;
 		} catch (e) {
 			console.error(e);
