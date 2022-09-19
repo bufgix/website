@@ -19,6 +19,7 @@
 	import relativeTime from 'dayjs/plugin/relativeTime.js';
 
 	import TheIcons from '$lib/components/TheIcons.svelte';
+	import Analytics from '$lib/components/Analytics.svelte';
 
 	dayjs.extend(relativeTime);
 
@@ -73,6 +74,8 @@
 	<meta name="twitter:image:alt" content="A tech blog generally about Frontend and Javascript" />
 	<meta name="twitter:creator" content="@bufgix_" />
 </svelte:head>
+
+<Analytics />
 
 <TheIcons />
 
