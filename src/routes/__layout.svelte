@@ -27,6 +27,7 @@
 
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import DynamicIsland from '$lib/components/DynamicIsland.svelte';
 
 	onMount(() => {
 		// set theme
