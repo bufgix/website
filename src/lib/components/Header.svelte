@@ -111,10 +111,10 @@
 	};
 </script>
 
-<header class="prose dark:prose-invert container mx-auto p-4 pb-5 flex flex-col">
+<header class="prose dark:prose-invert container mx-auto p-4  flex flex-col">
 	<div class="flex flex-row">
 		<a class="no-underline" href="/">
-			<code class="text-base md:text-2xl">faruk@webdev:$ </code>
+			<code class="text-base md:text-3xl">faruk@webdev:$ </code>
 		</a>
 		<input
 			bind:this={searchInput}
@@ -129,7 +129,7 @@
 		<code class="text-sm md:text-base text-gray-400 mt-2">{@html output}</code>
 	{/if}
 
-	<nav class="mt-2">
+	<nav class="mt-4">
 		<ul class="flex flex-row flex-wrap items-center">
 			<li>
 				<a href="/">Home</a>
@@ -177,6 +177,10 @@
 				list-style: none;
 				margin: 0;
 				padding: 0;
+
+				li:first-child {
+					padding-left: 0;
+				}
 
 				li {
 					@apply mr-1;

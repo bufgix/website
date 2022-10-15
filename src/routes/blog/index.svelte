@@ -19,8 +19,12 @@
 	<title>Blog</title>
 </svelte:head>
 
-<h2 class="mb-2">Latest Blogs</h2>
-<hr class="mb-4" />
+<h1 class="mb-2">Latest Blogs</h1>
+<h6 class="font-serif text-gray-500">
+	I write about web development, design, and other things I find interesting.
+</h6>
+<hr class="my-6" />
+
 <ul>
 	{#each posts as post}
 		<li>

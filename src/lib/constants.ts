@@ -20,3 +20,6 @@ export const PAGES = [
 		path: '/blog'
 	}
 ];
+
+export const ISSUE_URL = 'https://api.github.com/repos/bufgix/website/issues';
+export const ISSUE_LABEL = 'website-snippet';

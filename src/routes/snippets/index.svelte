@@ -26,9 +26,9 @@
 <h6 class="font-serif text-gray-500">Quick Notes & Tips</h6>
 <hr class="my-6" />
 <section>
-	{#each snippets as { html: { code }, title, id, tags, created_time }}
+	{#each snippets as { html: { code }, title, id, tags, created_time, path }}
 		<article class="prose-headings:text-2xl mb-20 md:mb-10 break-words">
-			<a class="no-underline" sveltekit:prefetch href={`/snippets/${id}`}>
+			<a class="no-underline" sveltekit:prefetch href={path}>
 				<h1 class="mb-0">{title}</h1>
 			</a>
 			<i class="text-gray-500">{dayjs(created_time).fromNow()}</i>
@@ -41,5 +41,6 @@
 			</div>
 			{@html fixCodeBlock(code)}
 		</article>
+		<hr />
 	{/each}
 </section>

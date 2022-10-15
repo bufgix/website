@@ -1,60 +1,41 @@
-import { Client } from '@notionhq/client';
-import variables from '$lib/variables';
-import { NotionToMarkdown } from 'notion-to-md';
 import { compile } from 'mdsvex';
 import relativeImages from 'mdsvex-relative-images';
 import remarkHeadingId from 'remark-heading-id';
 import figure from 'rehype-figure';
-
-const notion = new Client({ auth: variables.NOTION_SECRET });
-const databaseId = variables.NOTION_DB_ID;
+import { ISSUE_LABEL, ISSUE_URL } from '$lib/constants';
+import variables from '$lib/variables';
 
 export const GET = async () => {
-	const { results } = await notion.databases.query({ database_id: databaseId });
-
-	const pages = results
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		.map(({ properties, created_time }) => {
-			const tags = properties.Tags.multi_select;
-			try {
-				return {
-					pageId: properties.Page.title[0].mention.page.id,
-					pageTitle: properties.Page.title[0].plain_text,
-					tags,
-					created_time
-				};
-			} catch (error) {
-				if (error instanceof TypeError) {
-					return null;
-				}
-				throw error;
-			}
-		})
-		.filter((page) => page !== null);
-
-	const pagesContent = await Promise.all(
-		pages.map(async ({ pageId, pageTitle, tags, created_time }) => {
-			const n2m = new NotionToMarkdown({ notionClient: notion });
-			const mdBlocks = await n2m.pageToMarkdown(pageId);
-			const body = n2m.toMarkdownString(mdBlocks);
-
-			return {
-				id: pageId,
-				title: pageTitle,
-				path: `/snippets/${pageId}`,
-				tags,
-				created_time,
-				markdownBody: body,
-				html: await compile(body, {
-					remarkPlugins: [relativeImages, remarkHeadingId],
-					rehypePlugins: [figure]
-				})
-			};
-		})
-	);
+	const searchParams = new URLSearchParams();
+	searchParams.set('labels', ISSUE_LABEL);
 
 	return {
-		body: pagesContent
+		body: await fetch(`${ISSUE_URL}?${searchParams.toString()}`, {
+			headers: {
+				'Content-Type': 'application/vnd.github+json',
+				Authorization: `Bearer ${variables.GITHUB_TOKEN}`
+			}
+		})
+			.then((res) => res.json())
+			.then(async (snippets) => {
+				return Promise.all(
+					snippets.map(async (snippet) => {
+						return {
+							id: snippet.id,
+							title: snippet.title,
+							path: `/snippets/${snippet.number}`,
+							tags: snippet.labels
+								.map((label) => label.name)
+								.filter((label) => label !== ISSUE_LABEL),
+							created_time: snippet.created_at,
+							markdownBody: snippet.body,
+							html: await compile(snippet.body, {
+								remarkPlugins: [relativeImages, remarkHeadingId],
+								rehypePlugins: [figure]
+							})
+						};
+					})
+				);
+			})
 	};
 };

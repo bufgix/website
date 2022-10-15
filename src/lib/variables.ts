@@ -7,7 +7,8 @@ const variables = {
 	DOMAIN: import.meta.env.VITE_DOMAIN as string,
 	SPOTIFY_CLIENT_ID: import.meta.env.VITE_SPOTIFY_CLIENT_ID as string,
 	SPOTIFY_CLIENT_SECRET: import.meta.env.VITE_SPOTIFY_CLIENT_SECRET as string,
-	SPOTIFY_REFRESH_TOKEN: import.meta.env.VITE_SPOTIFY_REFRESH_TOKEN as string
+	SPOTIFY_REFRESH_TOKEN: import.meta.env.VITE_SPOTIFY_REFRESH_TOKEN as string,
+	GITHUB_TOKEN: import.meta.env.VITE_GITHUB_TOKEN as string
 };
 
 export default variables;

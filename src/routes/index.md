@@ -8,7 +8,8 @@
 
 </svelte:head>
 
-# Ömer Faruk Oruç
+<h2 class="mb-2">About Me</h2>
+<hr class="mb-4" />
 
 Hi, I am Faruk, a frontend developer. Working at [Binalyze](https://www.binalyze.com/)
 
