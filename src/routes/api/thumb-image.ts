@@ -1,5 +1,6 @@
 import satori from 'satori';
 import type { SatoriOptions } from 'satori';
+import sharp from 'sharp';
 import type { RequestHandler } from '@sveltejs/kit';
 
 const robotoRegularPath = 'http://farukoruc.com/fonts/Roboto-Regular.ttf';
@@ -74,7 +75,7 @@ export const GET: RequestHandler = async ({ request }) => {
 	const title = requestUrl.searchParams.get('title');
 	const readTime = requestUrl.searchParams.get('readTime');
 
-	const body = await satori(
+	const svg = await satori(
 		h('div', wrapperStyle, [
 			h('div', { fontSize: '52px', fontFamily: 'Roboto-Bold' }, title),
 			h('div', { display: 'flex', flexDirection: 'row', marginTop: '15px' }, [
@@ -118,10 +119,11 @@ export const GET: RequestHandler = async ({ request }) => {
 		]),
 		await satoriOptions()
 	);
+	const body = await sharp(Buffer.from(svg)).png().toBuffer();
 	return {
 		body,
 		headers: {
-			'Content-Type': 'image/svg+xml'
+			'Content-Type': 'image/png'
 		}
 	};
 };
