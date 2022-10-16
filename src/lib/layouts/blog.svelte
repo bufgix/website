@@ -20,6 +20,7 @@
 <svelte:head>
 	<title>{title} | Faruk Oruç</title>
 
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={`${title} | Faruk Oruç`} />
 	<meta name="twitter:url" content="https://faruk-website.vercel.app/" />
 	<meta
