@@ -5,7 +5,6 @@ tags:
   - Python
 ---
 
-
 ## Nedir?
 
 Python 3.7 ile gelen güzel bir yapı olan `dataclass`'lar, Python geliştiricileri için mükemmel bir yenilik. Bu yazıda elimden geldiğince bu yapıyı anlatmaya çalısacağım.

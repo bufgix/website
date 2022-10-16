@@ -184,8 +184,8 @@ Aynı şekilde [`/snippets`](/snippets) kısmını da bu yolla yaptım. Aynı
 verileri parse ettiğim sıkıcı kodlar var sadece :)
 İsteyen [buradan](https://github.com/bufgix/website/blob/master/src/routes/api/snippets/index.json.ts) bakabilir
 
-
 ### Blog Postlar ve MDsveX
+
 Peki, blog postlar için de `.svelte` dosyaları mı kullanıyorum?
 Tabii ki hayır. Bunun için [MDsveX](https://mdsvex.pngwn.io/) markdown processor kullanıyorum.
 Yaptığı şey basitçe `/routes` içinde bir `.md` dosyası varsa bunu parse
@@ -194,7 +194,6 @@ eklenti desteği, metadata, layouts, syntax highlighting gibi pek çok
 özelliğini de kullanbiliyorsunuz.
 
 ![](./mdsvex.png)
-
 
 Kullandığım eklentiler ise şu şekilde:
 
@@ -212,7 +211,6 @@ mdsvex({
 ```
 
 Bu websitesinin kodlarına açık kaynak olarak [Github](https://github.com/bufgix/website)'dan erişebilirsiniz.
-
 
 ### Kaynakça
 

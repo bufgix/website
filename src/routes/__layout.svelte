@@ -57,7 +57,7 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-	<meta name="description" content="A tech blog generally about Frontend and Javascript" />
+	<!--	<meta name="description" content="A tech blog generally about Frontend and Javascript" />
 
 	<meta name="image" content="https://farukoruc.com/banner.jpg" data-react-helmet="true" />
 	<meta property="og:title" content="Faruk Oruç" />
@@ -73,7 +73,7 @@
 	<meta name="twitter:description" content="A tech blog generally about Frontend and Javascript" />
 	<meta name="twitter:image" content="https://farukoruc.com/banner.jpg" />
 	<meta name="twitter:image:alt" content="A tech blog generally about Frontend and Javascript" />
-	<meta name="twitter:creator" content="@bufgix_" />
+	<meta name="twitter:creator" content="@bufgix_" />-->
 </svelte:head>
 
 <Analytics />

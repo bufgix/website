@@ -327,7 +327,7 @@ yakalamamız ve kullanıcıya bildirmemiz gerekir.
 Backend servisini basit bir istek yaptığımızı düşünelim. Sayfa açıldığı zaman
 verileri çeksin
 
-```tsx:/views/Cars/index.tsx 
+```tsx:/views/Cars/index.tsx
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
 
@@ -364,7 +364,7 @@ bu şekilde tanımlamalar yapmak işkence olacaktır. Bunu daha efektif bir hale
 React tarafında backend servisinden veri çekerken [React Query](https://react-query.tanstack.com/) kullanıyorum.
 Basit olarak şöyle
 
-```tsx:/views/Cars/index.tsx 
+```tsx:/views/Cars/index.tsx
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { useQuery } from 'react-query';
