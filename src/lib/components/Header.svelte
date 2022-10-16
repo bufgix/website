@@ -5,6 +5,7 @@
 	import { goto } from '$app/navigation';
 	import { getRandomCommandPlaceholder } from '$lib/utils';
 	import Icon from '$lib/components/Icon.svelte';
+	import variables from '$lib/variables';
 
 	let placeholder = '';
 	let output = '';
