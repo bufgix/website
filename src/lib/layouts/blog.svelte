@@ -20,7 +20,6 @@
 <svelte:head>
 	<title>{title} | Faruk Oruç</title>
 
-	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={`${title} | Faruk Oruç`} />
 	<meta name="twitter:url" content="https://faruk-website.vercel.app/" />
 	<meta
@@ -33,7 +32,6 @@
 			title
 		)}&readTime=6%20min%20read&desc=${encodeURIComponent(description)}`}
 	/>
-	<meta name="twitter:creator" content="@bufgix_" />
 </svelte:head>
 
 <article class="prose dark:prose-invert">
