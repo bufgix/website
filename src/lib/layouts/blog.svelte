@@ -29,7 +29,9 @@
 	/>
 	<meta
 		name="twitter:image"
-		content={`${variables.DOMAIN}/api/thumb-image?title=${title}&readTime=6%20min%20read&desc=${description}`}
+		content={`${variables.DOMAIN}/api/thumb-image?title=${encodeURIComponent(
+			title
+		)}&readTime=6%20min%20read&desc=${encodeURIComponent(description)}`}
 	/>
 	<meta name="twitter:creator" content="@bufgix_" />
 </svelte:head>

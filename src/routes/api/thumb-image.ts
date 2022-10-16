@@ -1,4 +1,3 @@
-import fs from 'fs';
 import satori from 'satori';
 import type { SatoriOptions } from 'satori';
 import type { RequestHandler } from '@sveltejs/kit';
