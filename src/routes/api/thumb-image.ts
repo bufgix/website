@@ -3,8 +3,8 @@ import satori from 'satori';
 import type { SatoriOptions } from 'satori';
 import type { RequestHandler } from '@sveltejs/kit';
 
-const robotoRegularPath = './static/fonts/Roboto-Regular.ttf';
-const robotoBoldPath = './static/fonts/Roboto-Bold.ttf';
+const robotoRegularPath = 'http://farukoruc.com/fonts/Roboto-Regular.ttf';
+const robotoBoldPath = 'http://farukoruc.com/fonts/Roboto-Bold.ttf';
 
 const h = (element = 'div', style = {}, children = null, rest = {}) => {
 	return {
@@ -31,18 +31,43 @@ const wrapperStyle = {
 	backgroundSize: '100px 100px'
 };
 
-const satoriOptions = {
-	width: 800,
-	height: 400,
-	fonts: [
-		{
-			name: 'Roboto-Bold',
-			weight: 700,
-			data: fs.readFileSync(robotoBoldPath)
-		},
-		{ name: 'Roboto-Regular', weight: 400, data: fs.readFileSync(robotoRegularPath) }
-	]
-} as SatoriOptions;
+const cacheFontsData = {
+	robotoBold: null,
+	robotoRegular: null
+};
+
+const satoriOptions = async () => {
+	return {
+		width: 800,
+		height: 400,
+		fonts: [
+			{
+				name: 'Roboto-Bold',
+				weight: 700,
+				data:
+					cacheFontsData.robotoRegular ||
+					(await fetch(robotoBoldPath)
+						.then((res) => res.arrayBuffer())
+						.then((buf) => {
+							cacheFontsData.robotoBold = buf;
+							return buf;
+						}))
+			},
+			{
+				name: 'Roboto-Regular',
+				weight: 400,
+				data:
+					cacheFontsData.robotoBold ||
+					(await fetch(robotoRegularPath)
+						.then((res) => res.arrayBuffer())
+						.then((buf) => {
+							cacheFontsData.robotoRegular = buf;
+							return buf;
+						}))
+			}
+		]
+	} as SatoriOptions;
+};
 
 export const GET: RequestHandler = async ({ request }) => {
 	const requestUrl = new URL(request.url);
@@ -92,7 +117,7 @@ export const GET: RequestHandler = async ({ request }) => {
 				]
 			)
 		]),
-		satoriOptions
+		await satoriOptions()
 	);
 	return {
 		body,
