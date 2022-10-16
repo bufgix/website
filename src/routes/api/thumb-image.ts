@@ -1,12 +1,10 @@
+import fs from 'fs';
 import satori from 'satori';
 import type { SatoriOptions } from 'satori';
 import type { RequestHandler } from '@sveltejs/kit';
-import fs from 'fs';
-import { join } from 'path';
 
-const robotoRegularPath = join(process.cwd(), 'static', 'fonts', 'Roboto-Regular.ttf');
-const robotoBoldPath = join(process.cwd(), 'static', 'fonts', 'Roboto-Bold.ttf');
-const playFairDisplay = join(process.cwd(), 'static', 'fonts', 'playfair-display.ttf');
+const robotoRegularPath = './static/fonts/Roboto-Regular.ttf';
+const robotoBoldPath = './static/fonts/Roboto-Bold.ttf';
 
 const h = (element = 'div', style = {}, children = null, rest = {}) => {
 	return {
@@ -42,8 +40,7 @@ const satoriOptions = {
 			weight: 700,
 			data: fs.readFileSync(robotoBoldPath)
 		},
-		{ name: 'Roboto-Regular', weight: 400, data: fs.readFileSync(robotoRegularPath) },
-		{ name: 'PlayfairDisplay', weight: 400, data: fs.readFileSync(playFairDisplay) }
+		{ name: 'Roboto-Regular', weight: 400, data: fs.readFileSync(robotoRegularPath) }
 	]
 } as SatoriOptions;
 
