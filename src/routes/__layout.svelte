@@ -63,7 +63,7 @@
 	<meta property="og:title" content="Faruk Oruç" />
 	<meta property="og:url" content="https://farukoruc.com/" />
 	<meta property="og:description" content="A tech blog generally about Frontend and Javascript" />
-	<meta property="og:image" content="https://farukoruc.com//banner.png" />
+	<meta property="og:image" content="https://farukoruc.com/banner.png" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image:alt" content="A tech blog generally about Frontend and Javascript" />
 
