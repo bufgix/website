@@ -26,7 +26,7 @@
 		name="twitter:description"
 		content={description || 'A tech blog generally about Frontend and Javascript'}
 	/>
-	<meta name="twitter:image" content="https://faruk-website.vercel.app/banner.jpg" />
+	<meta name="twitter:image" content={`/api/thumb-image?title=${title}&readTime=6%20min%20read`} />
 	<meta name="twitter:creator" content="@bufgix_" />
 </svelte:head>
 
@@ -44,4 +44,4 @@
 	<slot />
 </article>
 
-<Claps  fixed="center" replyUrl="https://twitter.com/bufgix_" />
+<Claps fixed="center" replyUrl="https://twitter.com/bufgix_" />
