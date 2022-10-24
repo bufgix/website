@@ -10,6 +10,7 @@
 <script>
 	import dayjs from 'dayjs';
 	import variables from '$lib/variables';
+	import { page } from '$app/stores';
 
 	export let title;
 	export let date;
@@ -22,7 +23,7 @@
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={`${title} | Faruk Oruç`} />
-	<meta name="twitter:url" content="https://faruk-website.vercel.app/" />
+	<meta name="twitter:url" content={`${$page.url.toString()}`} />
 	<meta
 		name="twitter:description"
 		content={description || 'A tech blog generally about Frontend and Javascript'}
