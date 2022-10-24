@@ -57,34 +57,33 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 	<meta name="description" content="A tech blog generally about Frontend and Javascript" />
-	<!--
-		<meta name="image" content="https://farukoruc.com/banner.jpg" data-react-helmet="true" />
-		<meta property="og:title" content="Faruk Oruç" />
-		<meta property="og:url" content="https://farukoruc.com/" />
-		<meta property="og:description" content="A tech blog generally about Frontend and Javascript" />
-		<meta property="og:image" content="https://farukoruc.com/banner.jpg" />
-		<meta property="og:type" content="website" />
-		<meta property="og:image:alt" content="A tech blog generally about Frontend and Javascript" />
-
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Faruk's Tech Blog" />
-		<meta name="twitter:url" content="https://farukoruc.com/" />
-		<meta name="twitter:description" content="A tech blog generally about Frontend and Javascript" />
-		<meta name="twitter:image" content="https://farukoruc.com/banner.jpg" />
-		<meta name="twitter:image:alt" content="A tech blog generally about Frontend and Javascript" />
-		<meta name="twitter:creator" content="@bufgix_" />-->
+	<meta name="image" content="https://farukoruc.com/banner.jpg" data-react-helmet="true" />
+	<meta property="og:title" content="Faruk Oruç" />
+	<meta property="og:url" content="https://farukoruc.com/" />
+	<meta property="og:description" content="A tech blog generally about Frontend and Javascript" />
+	<meta property="og:image" content="https://farukoruc.com/banner.jpg" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image:alt" content="A tech blog generally about Frontend and Javascript" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Faruk's Tech Blog" />
+	<meta name="twitter:url" content="https://farukoruc.com/" />
+	<meta name="twitter:description" content="A tech blog generally about Frontend and Javascript" />
+	<meta name="twitter:image" content="https://farukoruc.com/banner.jpg" />
+	<meta name="twitter:image:alt" content="A tech blog generally about Frontend and Javascript" />
+	<meta name="twitter:creator" content="@bufgix_" />
 </svelte:head>
 
 <Analytics />
-
 <TheIcons />
 
-<main class="bg-light dark:bg-dark dark:text-white min-h-screen transition-colors duration-100">
+<main
+	class="bg-light dark:bg-dark dark:text-white min-h-screen transition-colors duration-100 flex flex-col"
+>
 	<Header />
 
 	{#key currentRoute}
 		<main
-			class="prose container w-full md:mx-auto px-4 dark:prose-invert"
+			class="prose container w-full md:mx-auto px-4 dark:prose-invert flex-1"
 			in:fade={{ duration: 150, delay: 150 }}
 			out:fade={{ duration: 150 }}
 		>

@@ -19,14 +19,13 @@
 
 </svelte:head>
 
-<h2 class="mb-2">About Me</h2>
-<hr class="mb-4" />
+<h1 class="mb-2">About Me</h1>
+<hr class="my-4" />
 
 Hi, I am Faruk, a frontend developer. Working at [Binalyze](https://www.binalyze.com/) Creator of
-the open source projects. [Github CV](https://github.com/bufgix/github-cv), [Passwall
-Extension](https://github.com/passwall/passwall-extension), [Github
-Blog](https://github.com/bufgix/github-blog) and [React Native
-Notify](https://github.com/Papyon-Apps/rn-notify). Currently I am working on create cool mobile apps
+the open source projects. [github cv](https://github.com/bufgix/github-cv), [passwall extension](https://github.com/passwall/passwall-extension),
+[github blog](https://github.com/bufgix/github-blog), [svelte-claps](https://github.com/bufgix/svelte-claps)
+and [react native notfiy](https://github.com/Papyon-Apps/rn-notify). Currently I am working on create cool mobile apps
 with React Native in [PapyonApps](https://github.com/Papyon-Apps/)
 
 <TechStack />
