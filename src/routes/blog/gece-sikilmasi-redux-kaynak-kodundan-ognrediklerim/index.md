@@ -1,0 +1,219 @@
+---
+title: Gece sıkılması, Redux kaynak kodundan öğrendiklerim
+date: 2022-10-31
+tags:
+  - Javascript
+  - Redux
+---
+
+Redux gercekten hicbir sey yapmiyor.
+
+Pazar gecesi yaklasik 2 saat [Redux](https://github.com/reduxjs/redux) kaynak kodu okuma
+maceramdan cikardigim sonuc bu oldu iste.
+
+Yani bi'seyler yaptigi kesin, belki "_yaptigi isi cok basit sekilde hallediyor_" da denebilir
+
+---
+
+Her seyden once, Redux nedir?...
+
+diye baslamayacagim tabi. Buraya kadar geldiyseniz Redux ne biliyorsunuzdur
+diye tahmin ediyorum.
+
+## Simdi
+
+Bilginiz uzere `reducer` dedigimiz fonksiyonlar state'i degistirir. Ve bunu
+en yalin haliyle size yaptirir. Redux size onceki state'i ve bir action'i
+verir. Siz de bu action'a gore yeni state'i dondurursunuz. Bu islemlerin hepsini
+siz kendiniz yaparsiniz. Redux sadece uygulamanizdaki bazi yerlere "_state degisti_"
+sinyalini gonderir. Peki nasil yapar bunu?
+
+`createStore` [implementasyonuna](https://github.com/reduxjs/redux/blob/4ebc2bcfb7c8631656ab9dd400c2578afd1b0c41/src/createStore.ts#L42) bu bakalim. Edge caseleri, type checkleri ve
+typescript ile ilgili kisimlari gecip asil isleme bakarsak
+
+[ilgili kisim](https://github.com/reduxjs/redux/blob/4ebc2bcfb7c8631656ab9dd400c2578afd1b0c41/src/createStore.ts#L110-L112)
+
+```js
+export default function createStore(reducer, preloadedState, enhancer) {
+	let currentReducer = reducer;
+	let currentState = preloadedState;
+	let listeners = [];
+
+	// ...
+}
+```
+
+`reducer` bildidigimiz gibi state'i degistiren fonksiyon. `preloadedState` ise
+uygulamanizin baslangic state'i. `enhancer` zimbirtisi middleware
+olaylarini sagliyor. Bu yazida onu ele almayacagim.
+
+`listeners` array'i dikkatimizi cekiyor. Vardir bir hikmeti deyip devam edelim
+
+kodun ilerleyen kisimlarinda storun kendisini donduren bir `getState` fonksiyonu
+var.
+
+[ilgili kisim](https://github.com/reduxjs/redux/blob/4ebc2bcfb7c8631656ab9dd400c2578afd1b0c41/src/createStore.ts#L134-L144)
+
+```js
+export default function createStore(/* ... */) {
+	// ...
+
+	function getState() {
+		return currentState;
+	}
+
+	// ...
+}
+```
+
+O anki state'i almamiza yarayan bir fonksiyon. Guzel
+
+kod `subscribe` methodu ile devam ediyor
+
+[ilgili kisim](https://github.com/reduxjs/redux/blob/4ebc2bcfb7c8631656ab9dd400c2578afd1b0c41/src/createStore.ts#L190-L209)
+
+```js
+export default function createStore(/* ... */) {
+	// ...
+
+	function subscribe(listener) {
+		listeners.push(listener);
+		return function unsubscribe() {
+			const index = listeners.indexOf(listener);
+			listeners.splice(index, 1);
+		};
+	}
+
+	// ...
+}
+```
+
+gorunuse gore bu fonksiyon `listeners` array'ine bi'seyler ekliyor. Ve
+`unsubscribe` fonksiyonunu donduruyor. Bu fonksiyonu cagirdigimizda
+`listeners` array'inden listener'i cikariyor. Hmm, biraz garip bir islem
+
+Vakit kaybetmeden devam ediyorum ki buyuk resmi gorelim. Asagida meshur
+`dispatch` fonksiyonu var
+
+[ilgili kisim](https://github.com/reduxjs/redux/blob/4ebc2bcfb7c8631656ab9dd400c2578afd1b0c41/src/createStore.ts#L259-L268)
+
+```js
+export default function createStore(/* ... */) {
+	// ...
+
+	function dispatch(action) {
+		currentState = currentReducer(currentState, action);
+		listeners.forEach((listener) => listener());
+		return action;
+	}
+
+	// ...
+}
+```
+
+Olayin koptugu yer burasi. `dispatch` fonksiyonu bir action aliyor.
+Bu action'i `reducer` fonksiyonuna veriyor. `reducer` fonksiyonu yeni state'i
+donduruyor. Bu yeni state'i `currentState` degiskenine atiyor. Ve `listeners`
+array'indeki tum listenerlar cagiriliyor.
+
+Buradan cikaracagimiz iki sonuc var. Ilk olarak `dispatch` fonksiyonu `reducer` i
+kullanarak state'i degistiriyor ve yeni state olusuyor. Ikinci olarak `listeners` array'i
+icinde fonksiyonlar tutuluyor. Bu fonskiyonlarin hepsi `dispatch` calistigi
+anda cagiriliyorlar. Bu sayede "state degisti" sinyalini tum
+listenerlara (subscribe olmus butun fonskiyonlara) gonderilmis oluyor. Bir onceki adimda
+state, `reducer` ile degistigi icin butun listenerlar yeni state ile calisiyor.
+
+Son olarak gerekli olan degerleri ve fonskiyonlari `createStore` fonksiyonu donduruyor.
+
+[ilgili kisim](https://github.com/reduxjs/redux/blob/4ebc2bcfb7c8631656ab9dd400c2578afd1b0c41/src/createStore.ts#L359-L368)
+
+```js
+export default function createStore(/* ... */) {
+	// ...
+
+	dispatch({ type: '@@redux/INIT' });
+	return {
+		dispatch,
+		subscribe,
+		getState
+	};
+}
+```
+
+Goruldugu gibi fonskiyon isini bitirmeden once bir `dispatch` cagiriyor.
+Bunun amaci `reducer` fonksiyonu ilk calistiginda baslangic state'i dondurmek.
+Boylece verilen `reducer` a gore initial state olusmus oluyor. Burada action
+type `@@redux/INIT` olmasi onemli. Cunku `reducer` fonksiyonu bu action
+type'i goremezse baslangic state'i dondurmeli.
+
+Tum kaynak kod sadelestirilmis hali ile su sekilde
+
+```js
+export default function createStore(reducer, preloadedState, enhancer) {
+	let currentReducer = reducer;
+	let currentState = preloadedState;
+	let listeners = [];
+
+	function getState() {
+		return currentState;
+	}
+
+	function subscribe(listener) {
+		listeners.push(listener);
+		return function unsubscribe() {
+			const index = listeners.indexOf(listener);
+			listeners.splice(index, 1);
+		};
+	}
+
+	function dispatch(action) {
+		currentState = currentReducer(currentState, action);
+		listeners.forEach((listener) => listener());
+		return action;
+	}
+
+	dispatch({ type: '@@redux/INIT' });
+	return {
+		dispatch,
+		subscribe,
+		getState
+	};
+}
+```
+
+Bu kadar. Nasil calisitgina bakalim.
+
+```js
+const counterReducer = (state = 0, action) => {
+	switch (action.type) {
+		case 'INCREMENT':
+			return state + 1;
+		case 'DECREMENT':
+			return state - 1;
+		default:
+			return state;
+	}
+};
+
+const store = createStore(counterReducer, 0);
+
+store.subscribe(() => {
+	console.log('state changed', store.getState());
+});
+
+store.dispatch({ type: 'INCREMENT' });
+// state changed 1
+store.dispatch({ type: 'INCREMENT' });
+// state changed 2
+store.dispatch({ type: 'DECREMENT' });
+// state changed 1
+```
+
+[Kendin dene](https://codesandbox.io/s/distracted-tharp-ykcm55?file=/src/index.js)
+
+Evet bu kadardi. Redux'un kaynak kodu gercekten cok kisa ama suan NPM de haftalik
+indirme sayisi 8 milyon u gecmis durumda. React olmasa bu kadar populer olmazdi fakat
+isini guzel yapan bir kutuphane.
+
+> Ben de basit bir implementasyon yaptim
+> [Burada](https://codesandbox.io/s/admiring-mclean-tyfmhk?file=/src/index.js)
