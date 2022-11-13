@@ -1,24 +1,11 @@
 {
-	"compilerOptions": {
-		"moduleResolution": "node",
-		"module": "es2020",
-		"lib": ["es2020", "DOM"],
-		"target": "es2020",
-		"importsNotUsedAsValues": "error",
-		"preserveValueImports": true,
-		"isolatedModules": true,
-		"resolveJsonModule": true,
-		"sourceMap": true,
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-		"baseUrl": ".",
-		"allowJs": true,
-		"checkJs": true,
-		"paths": {
-			"$lib": ["src/lib"],
-			"$lib/*": ["src/lib/*"]
-		},
-		"rootDirs": ["./types"]
-	}
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@layouts/*": ["src/layouts/*"]
+    }
+  }
 }
