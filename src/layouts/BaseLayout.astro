@@ -1,3 +1,8 @@
+---
+import Header from "@components/Header.svelte";
+import TheIcons from "@components/TheIcons.astro";
+---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -5,13 +10,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
+  <TheIcons />
   <body>
     <main
       class="bg-light dark:bg-dark dark:text-white text-dark min-h-screen transition-colors duration-100 flex flex-col"
     >
-      <div class="prose container mx-auto px-4 flex-1 leading-relaxed">
+      <Header client:load />
+      <div
+        class="prose container mx-auto px-4 flex-1 leading-relaxed dark:prose-invert"
+      >
         <slot />
       </div>
     </main>
   </body>
+
+
 </html>
