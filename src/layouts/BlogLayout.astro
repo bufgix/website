@@ -1,0 +1,24 @@
+---
+import dayjs from "dayjs";
+import BaseLayout from "./BaseLayout.astro";
+
+const { frontmatter } = Astro.props;
+const { title, date, tags } = frontmatter;
+---
+
+<BaseLayout>
+  <article class="prose prose-lg dark:prose-invert">
+    <div class="md:my-16">
+      <span class="font-serif text-xl">
+        {dayjs(date).format("MMM DD, YYYY")}
+      </span>
+      <h1 class="md:text-5xl mb-4">{title}</h1>
+      {
+        tags?.map((tag) => (
+          <span class="font-serif font-semibold mr-2">#{tag}</span>
+        ))
+      }
+    </div>
+    <slot />
+  </article>
+</BaseLayout>

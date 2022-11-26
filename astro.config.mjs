@@ -1,7 +1,9 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import svelte from "@astrojs/svelte";
+
 import m2dx from "astro-m2dx";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -70,6 +72,7 @@ export default defineConfig({
     }),
     tailwind(),
     svelte(),
+    react(),
   ],
   markdown: {
     syntaxHighlight: false,

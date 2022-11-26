@@ -5,12 +5,7 @@ pre {
 
   /* Give it some space to breathe */
   padding: 12px;
-
-  /* All code samples get a grey border, twoslash ones get a different color */
-  border-left: 1px solid #999;
-  border-bottom: 1px solid #999;
-
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 
   /* Important to allow the code to move horizontally; */
   overflow-x: auto;
@@ -30,15 +25,21 @@ pre.shiki div.highlight {
   margin: 0;
   padding: 0;
 }
+
 pre.shiki div.highlight {
   opacity: 1;
-  background-color: #f1f8ff;
+  color: white;
+  background-color: #6820a4;
 }
+
+.dark pre.shiki div.highlight {
+  background-color: #1e1e1e;
+}
+
 pre.shiki div.line {
   min-height: 1rem;
 }
 
-/** Don't show the language identifiers */
 pre.shiki .language-id {
   display: none;
 }
@@ -64,7 +65,7 @@ pre.twoslash data-lsp:hover::before {
   text-align: left;
   padding: 5px 8px;
   border-radius: 2px;
-  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, Courier New, monospace;
+  font-family: "Fira Code", Menlo, Monaco, Consolas, Courier New, monospace !important;
   font-size: 14px;
   white-space: pre-wrap;
   z-index: 100;
@@ -73,6 +74,14 @@ pre.twoslash data-lsp:hover::before {
 pre .code-container {
   overflow: auto;
 }
+
+pre .code-title {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
 /* The try button */
 pre .code-container > a {
   position: absolute;
@@ -103,7 +112,7 @@ pre .code-container:hover a {
 
 pre code {
   font-size: 15px;
-  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, Courier New, monospace;
+  font-family: "Fira Code", Menlo, Monaco, Consolas, Courier New, monospace !important;
   white-space: pre;
   -webkit-overflow-scrolling: touch;
 }
@@ -217,11 +226,7 @@ pre .inline-completions ul.dropdown li span.result {
   color: black;
   display: inline-block;
 }
-.dark-theme .markdown pre {
-  background-color: #d8d8d8;
-  border-color: #ddd;
-  filter: invert(98%) hue-rotate(180deg);
-}
+
 data-lsp {
   /* Ensures there's no 1px jump when the hover happens */
   border-bottom: 1px dotted transparent;
@@ -295,4 +300,32 @@ pre .logger.log-log {
 pre .logger.log-log svg {
   margin-left: 6px;
   margin-right: 9px;
+}
+
+code {
+  counter-reset: line;
+}
+code > .line:before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+}
+
+.heading-wrapper {
+  &:hover {
+    a {
+      display: inline-block;
+    }
+  }
+  * {
+    display: inline-block;
+  }
+  a {
+    margin-left: 0.5rem;
+    display: none;
+  }
 }

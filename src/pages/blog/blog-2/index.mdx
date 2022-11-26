@@ -1,0 +1,48 @@
+---
+title: Deneme
+date: 2021-11-26
+layout: "@layouts/BlogLayout.astro"
+---
+
+import Header from "@components/Header.svelte";
+import { Sandpack } from "@codesandbox/sandpack-react";
+
+export const appCode = `import Header from "./Header";
+export default function App() {
+  return <div>
+    <Header />
+   <h1>Hello Sandpack deneme </h1>
+  </div>;
+}`;
+
+export const headerCode = `export default function Header() {
+  return <h1>Header</h1>
+}`;
+
+## Test Blog
+
+```tsx twoslash
+const App = () => {
+  //    ^?
+  return (
+    <div>
+      <h1>Hello Sandpack</h1>
+    </div>
+  );
+};
+```
+
+This is **test** blog
+
+<Sandpack
+  template="react"
+  theme="auto"
+  files={{
+    "/App.js": appCode,
+    "/Header.js": headerCode,
+  }}
+  options={{}}
+  client:load
+/>
+
+<Header client:load />
