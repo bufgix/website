@@ -1,6 +1,7 @@
 ---
 import Header from "@components/Header.svelte";
 import TheIcons from "@components/TheIcons.astro";
+import "@styles/editor.scss";
 ---
 
 <html lang="en">
@@ -23,6 +24,31 @@ import TheIcons from "@components/TheIcons.astro";
       </div>
     </main>
   </body>
+
+  <style is:global>
+    code {
+      counter-reset: line;
+    }
+    code > .line:before {
+      counter-increment: line;
+      content: counter(line);
+      display: inline-block;
+      width: 1rem;
+      margin-right: 2rem;
+      text-align: right;
+      color: gray;
+    }
+
+    code .line {
+      padding: 0 1.25rem;
+      border-left: 3px solid transparent;
+    }
+
+    code .highlighted {
+      background: rgba(200, 200, 255, 0.1);
+      border-left-color: #60a5fa;
+    }
+  </style>
 
 
 </html>

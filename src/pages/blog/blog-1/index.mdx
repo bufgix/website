@@ -1,0 +1,37 @@
+---
+title: Artık Python'da `elif` yazmak zorunda değilsiniz!
+date: 2021-11-26
+tags:
+  - Python
+  - CPython
+  - Grammar
+layout: "@layouts/BaseLayout.astro"
+---
+
+Twitterda gezinirken şöyle bir şey gördüm.
+
+```tsx twoslash
+import { useState } from "react";
+//       ^?
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+```json
+{ "json": true }
+```
+
+```py
+import os
+
+print(os.path.join("a", "b"))
+```

@@ -18,6 +18,8 @@
     placeholder = getRandomCommandPlaceholder();
     theme = localStorage.getItem("theme");
 
+    document.documentElement.classList.add(theme);
+
     document.addEventListener("keydown", (e) => {
       if (e.ctrlKey && e.key === "k") {
         searchInput.focus();
@@ -28,10 +30,7 @@
   const COMMANDS = {
     theme: {
       help: () => "Change the theme. `light` or `dark`",
-      func: (
-        event: WithTarget<KeyboardEvent, HTMLInputElement>,
-        value: string
-      ) => {
+      func: (_, value: string) => {
         if (!value) {
           placeholder = "Missing theme";
           return;
@@ -50,10 +49,7 @@
     go: {
       help: () => `Available pages ${PAGES.map((p) => p.name).join(",")}`,
 
-      func: (
-        event: WithTarget<KeyboardEvent, HTMLInputElement>,
-        name: string
-      ) => {
+      func: (_, name: string) => {
         if (!name) {
           placeholder = "Missing page";
           return;
@@ -84,7 +80,7 @@
         `Available commands: ${Object.keys(COMMANDS).join(
           ", "
         )}<br />usage: help &lt;command&gt;`,
-      func: (event: WithTarget<KeyboardEvent, HTMLInputElement>, value) => {
+      func: (_, value) => {
         if (!value)
           output = `Available commands: ${Object.keys(COMMANDS).join(", ")}`;
         else {

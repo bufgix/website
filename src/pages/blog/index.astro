@@ -1,0 +1,25 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const allPosts = await Astro.glob("./**/*.mdx");
+---
+
+<BaseLayout>
+  <h1 class="mb-2">Latest Blogs</h1>
+  <h6 class="font-serif text-gray-500">
+    I write about web development, design, and other things I find interesting.
+  </h6>
+  <ul>
+    {
+      allPosts.map((post) => {
+        return (
+          <li>
+            <a class="no-underline" href={post.url}>
+              {post.frontmatter.title}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</BaseLayout>
