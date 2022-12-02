@@ -1,7 +1,13 @@
 ---
+import dayjs from "dayjs";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-const allPosts = await Astro.glob("./**/*.mdx");
+const allPosts = await Astro.glob("./**/*.{mdx,md}");
+const orderedPost = allPosts.sort((a, b) => {
+  const aDate = dayjs(a.frontmatter.date);
+  const bDate = dayjs(b.frontmatter.date);
+  return aDate.isBefore(bDate) ? 1 : -1;
+});
 ---
 
 <BaseLayout>
@@ -11,7 +17,7 @@ const allPosts = await Astro.glob("./**/*.mdx");
   </h6>
   <ul>
     {
-      allPosts.map((post) => {
+      orderedPost.map((post) => {
         return (
           <li>
             <a class="no-underline" href={post.url}>

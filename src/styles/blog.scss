@@ -28,8 +28,6 @@ pre.shiki div.highlight {
 
 pre.shiki div.highlight {
   opacity: 1;
-  color: white;
-  background-color: #6820a4;
 }
 
 .dark pre.shiki div.highlight {
@@ -72,7 +70,6 @@ pre.twoslash data-lsp:hover::before {
 }
 
 pre .code-container {
-  overflow: auto;
 }
 
 pre .code-title {
@@ -315,7 +312,12 @@ code > .line:before {
   color: gray;
 }
 
-.heading-wrapper {
+h1[id],
+h2[id],
+h3[id],
+h4[id],
+h5[id],
+h6[id] {
   &:hover {
     a {
       display: inline-block;

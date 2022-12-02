@@ -52,7 +52,7 @@ export default defineConfig({
         [
           rehypeAutolinkHeadings,
           {
-            behavior: "after",
+            behavior: "append",
             group: ({ tagName }) =>
               h(`div.heading-wrapper.level-${tagName}`, {
                 tabIndex: -1,
