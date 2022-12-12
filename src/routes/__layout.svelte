@@ -91,6 +91,8 @@
 		</main>
 	{/key}
 
+	<script src="https://app.embed.im/snow.js" defer></script>
+
 	<Footer />
 </main>
 
