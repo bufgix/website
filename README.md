@@ -1,4 +1,4 @@
-## Personal Web Site
+## Personal WebSite
 
 ![preview](preview.png)
 
