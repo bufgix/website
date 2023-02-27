@@ -136,13 +136,13 @@
 				<a href="/">Home</a>
 			</li>
 			<li>
-				<a href="/blog">Blog</a>
+				<a href="https://bufgix.notion.site/bufgix/Lates-Posts-1a8bf252cb6a439a9197ce82ce012d19">Blog</a>
 			</li>
 			<li>
 				<a href="/snippets">Snippets</a>
 			</li>
 			<li>
-				<a href="/bookmarks">Bookmarks</a>
+				<a href="https://raindrop.io/farukdev/public-links-32010816">Bookmarks</a>
 			</li>
 			<li on:click={COMMANDS.random.func}>
 				<button>I'm feeling lucky</button>
