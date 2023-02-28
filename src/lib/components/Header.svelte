@@ -136,7 +136,7 @@
 				<a href="/">Home</a>
 			</li>
 			<li>
-				<a href="https://bufgix.notion.site/bufgix/Lates-Posts-1a8bf252cb6a439a9197ce82ce012d19">Blog</a>
+				<a href="https://bufgix.notion.site/Latest-Posts-1a8bf252cb6a439a9197ce82ce012d19">Blog</a>
 			</li>
 			<li>
 				<a href="/snippets">Snippets</a>
