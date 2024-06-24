@@ -9,7 +9,7 @@ module.exports = {
     return [
       {
         source: '/cv',
-        destination: 'https://docs.google.com/document/d/1tN6QMFZBXqTrzR9U2Gfjbctsv6FWRjSCq3qcAZWMQ74/edit?usp=sharing',
+        destination: 'https://docs.google.com/document/d/1cxKNXz4m6_x5T3T_7xn1sCwJTSc8ispb/edit?usp=sharing&ouid=102920743883960398765&rtpof=true&sd=true',
         permanent: false,
         basePath: false,
       },
