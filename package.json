@@ -11,8 +11,8 @@
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx .",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
-    "deploy": "next build && wrangler deploy",
-    "preview": "next build && wrangler dev"
+    "deploy": "yarn build && wrangler deploy",
+    "preview": "yarn build && wrangler dev"
   },
   "dependencies": {
     "next": "^14.0.4",

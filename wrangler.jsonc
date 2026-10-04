@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "website",
+  "account_id": "c984943a1496cdc23ed537b5b52b2f43",
   "compatibility_date": "2026-10-01",
   "routes": [
     { "pattern": "farukoruc.com", "custom_domain": true },
