@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "website",
+  "compatibility_date": "2026-10-01",
+  "routes": [
+    { "pattern": "farukoruc.com", "custom_domain": true },
+    { "pattern": "www.farukoruc.com", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

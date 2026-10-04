@@ -7,10 +7,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/export-tags.mjs",
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx .",
-    "lint:fix": "eslint --fix --ext .ts,.tsx ."
+    "lint:fix": "eslint --fix --ext .ts,.tsx .",
+    "deploy": "next build && wrangler deploy",
+    "preview": "next build && wrangler dev"
   },
   "dependencies": {
     "next": "^14.0.4",
@@ -27,6 +29,8 @@
     "eslint": "^8.56.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-unused-imports": "^3.0.0",
-    "typescript": "^5.3.3"
-  }
+    "typescript": "^5.3.3",
+    "wrangler": "^4.147.0"
+  },
+  "packageManager": "yarn@4.18.1+sha512.b2e1e7524f654f2749d32b4ebcb4622473cb5bcbc485df2007e12a154e50162a4d795526768bc5f5b8f81717bfd79deb2472813d86fb5ae2eb551fa9c872b08f"
 }

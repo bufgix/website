@@ -41,3 +41,7 @@ jspm_packages
 !.yarn/releases
 !.yarn/plugins
 .pnp.*
+
+# Static export and wrangler state
+out
+.wrangler
